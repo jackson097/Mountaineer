@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA01883D21A7120900E7747A /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01883B21A7120900E7747A /* MainMenu.cpp */; };
+		AA01884021A71C3200E7747A /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01883E21A71C3200E7747A /* GameWorld.cpp */; };
 		AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAAB14BD21A5FF8700B22D5B /* main.cpp */; };
 		AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */; };
 		AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C721A5FFD400B22D5B /* GLUT.framework */; };
@@ -25,6 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA01883B21A7120900E7747A /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
+		AA01883C21A7120900E7747A /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
+		AA01883E21A71C3200E7747A /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
+		AA01883F21A71C3200E7747A /* GameWorld.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameWorld.hpp; sourceTree = "<group>"; };
 		AAAB14BA21A5FF8700B22D5B /* mountaineer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mountaineer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB14BD21A5FF8700B22D5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				AAAB14BD21A5FF8700B22D5B /* main.cpp */,
+				AA01883B21A7120900E7747A /* MainMenu.cpp */,
+				AA01883C21A7120900E7747A /* MainMenu.hpp */,
+				AA01883E21A71C3200E7747A /* GameWorld.cpp */,
+				AA01883F21A71C3200E7747A /* GameWorld.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -144,6 +154,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */,
+				AA01883D21A7120900E7747A /* MainMenu.cpp in Sources */,
+				AA01884021A71C3200E7747A /* GameWorld.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +284,7 @@
 				AAAB14C321A5FF8700B22D5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

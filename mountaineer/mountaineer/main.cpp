@@ -10,6 +10,8 @@
 #endif
 
 #include <iostream>
+#include "MainMenu.hpp"
+#include "GameWorld.hpp"
 
 
 
@@ -18,7 +20,9 @@
 // Global Variables
 GLint winWidth = 1000;
 GLint winHeight = 900;
-GLint worldOption;
+GLint worldOption = 1;
+MainMenu menu;  // Main menu object
+GameWorld gameWorld; // GameWorld object
 
 
 
@@ -43,6 +47,12 @@ void display(void) {
     
     // World Options
     if(worldOption == 1) {   // Main Menu World
+        menu.displayMainMenu();
+        glutSwapBuffers();
+    }
+    
+    if(worldOption == 2) {  // Game World
+        gameWorld.displayGameWorld();
         glutSwapBuffers();
     }
 }
