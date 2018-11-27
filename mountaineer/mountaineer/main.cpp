@@ -12,6 +12,7 @@
 #include <iostream>
 #include "MainMenu.hpp"
 #include "GameWorld.hpp"
+#include "Button.hpp"
 
 
 
@@ -19,8 +20,11 @@
 GLint winWidth = 1000;
 GLint winHeight = 900;
 GLint worldOption = 1;
+GLint displayGameWorld;
 MainMenu menu;  // Main menu object
 GameWorld gameWorld; // GameWorld object
+Button startButton, settingsButton;
+
 
 
 
@@ -33,7 +37,8 @@ void init(void) {
     glutCreateWindow("Mountaineer");
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    
 }
 
 
@@ -52,6 +57,7 @@ void display(void) {
     }
     
     if(worldOption == 2) {  // Game World
+        glClearColor(0.0, 0.8, 1.0, 1.0);
         gameWorld.displayGameWorld();
         glFlush();
         glutSwapBuffers();
@@ -66,7 +72,6 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
     glViewport(0, 0, newWidth, newHeight);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    printf("Resizing Window...");
     winWidth = newWidth;
     winHeight = newHeight;
 }
@@ -76,12 +81,17 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
 
 
 void mouseAction(int button, int action, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON and action == GLUT_DOWN) {
+    if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
         printf("Clicked at %d, %d\n", x, y);
-        //printf(" y > %d, y < %d", (winHeight/10)*8, (winHeight/10)*9);
-        if(x < (winWidth/3)*2 && x > winWidth/3) {// && y < (winHeight/10)*9 && y > (winHeight/10)*8) { // Start button clicked
+        if(worldOption == 1 && x < startButton.x1 && x > startButton.x2 && y > 554 && y < 621) {  // Start Button clicked
             menu.startButtonClicked();
+            displayGameWorld = 1;
         }
+    }
+    
+    if(button == GLUT_LEFT_BUTTON && action == GLUT_UP && displayGameWorld == 1) {
+        worldOption = 2;    // Start game
+        glutPostRedisplay();
     }
 }
 
@@ -92,6 +102,7 @@ void mouseAction(int button, int action, int x, int y) {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
+    glutReshapeFunc(winReshapeFcn);
     init();
     glutDisplayFunc(display);
     glutMouseFunc(mouseAction);
