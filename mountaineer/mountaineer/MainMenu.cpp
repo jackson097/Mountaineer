@@ -3,24 +3,11 @@
 #include "MainMenu.hpp"
 
 extern GLint winWidth, winHeight;
-
-
-
-
-/*// ==============================================================================
- 
- TO DO FOR JACKSON:
-    - Figure out window reshape function
-    - Click on start button and highlight it (Get the right coordinates)
-
-*/// ==============================================================================
-
-
+extern Button startButton, settingsButton;
 
 
 
 void MainMenu::displayMainMenu() {
-    glClearColor(0.0, 0.8, 1.0, 1.0);
     drawTitle();
     drawStartButton();
     drawSettingsButton();
@@ -37,12 +24,9 @@ void MainMenu::drawTitle() {
 void MainMenu::drawStartButton() {
     printf("Drawing start button...\n");
     glColor3f(1.0, 0.0, 0.0);
-    glBegin(GL_POLYGON);
-        glVertex2f((winWidth/3)*2, (winHeight/10)*8);
-        glVertex2f(winWidth/3, (winHeight/10)*8);
-        glVertex2f(winWidth/3, (winHeight/10)*9);
-        glVertex2f((winWidth/3)*2, (winHeight/10)*9);
-    glEnd();
+    startButton.setPoints((winWidth/6)*3.5, (winHeight/10)*8, (winWidth/6)*2.5, (winHeight/10)*9);
+    startButton.draw();
+    
 }
 
 

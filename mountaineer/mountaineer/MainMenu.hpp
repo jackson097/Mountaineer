@@ -22,6 +22,8 @@
 
 #include <iostream>
 
+#include "Button.hpp"
+
 
 class MainMenu {
 public:
