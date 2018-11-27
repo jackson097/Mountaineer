@@ -113,7 +113,7 @@ void Cube::draw_face(int i)
 			glColor3f(faceColor[i][0], faceColor[i][1], faceColor[i][2]);
 
 
-	glBegin(GL_LINE_LOOP);
+	glBegin(GL_POLYGON);
 	glVertex3fv(vertex[face[i][0]]);
 	glVertex3fv(vertex[face[i][1]]);
 	glVertex3fv(vertex[face[i][2]]);
