@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA01883D21A7120900E7747A /* MainMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01883B21A7120900E7747A /* MainMenu.cpp */; };
-		AA01884021A71C3200E7747A /* GameWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01883E21A71C3200E7747A /* GameWorld.cpp */; };
 		AA01884321ACEB7C00E7747A /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01884121ACEB7C00E7747A /* Button.cpp */; };
 		AA01885221ADD42E00E7747A /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01884421ADD42E00E7747A /* Camera.cpp */; };
 		AA01885321ADD42E00E7747A /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01884621ADD42E00E7747A /* Cube.cpp */; };
@@ -37,8 +36,6 @@
 /* Begin PBXFileReference section */
 		AA01883B21A7120900E7747A /* MainMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenu.cpp; sourceTree = "<group>"; };
 		AA01883C21A7120900E7747A /* MainMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainMenu.hpp; sourceTree = "<group>"; };
-		AA01883E21A71C3200E7747A /* GameWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameWorld.cpp; sourceTree = "<group>"; };
-		AA01883F21A71C3200E7747A /* GameWorld.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameWorld.hpp; sourceTree = "<group>"; };
 		AA01884121ACEB7C00E7747A /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		AA01884221ACEB7C00E7747A /* Button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Button.hpp; sourceTree = "<group>"; };
 		AA01884421ADD42E00E7747A /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
@@ -114,8 +111,6 @@
 				AAAB14BD21A5FF8700B22D5B /* main.cpp */,
 				AA01883B21A7120900E7747A /* MainMenu.cpp */,
 				AA01883C21A7120900E7747A /* MainMenu.hpp */,
-				AA01883E21A71C3200E7747A /* GameWorld.cpp */,
-				AA01883F21A71C3200E7747A /* GameWorld.hpp */,
 				AA01884121ACEB7C00E7747A /* Button.cpp */,
 				AA01884221ACEB7C00E7747A /* Button.hpp */,
 				AA01884421ADD42E00E7747A /* Camera.cpp */,
@@ -201,7 +196,6 @@
 				AA01885521ADD42E00E7747A /* Point.cpp in Sources */,
 				AA01885821ADD42E00E7747A /* World.cpp in Sources */,
 				AA01885221ADD42E00E7747A /* Camera.cpp in Sources */,
-				AA01884021A71C3200E7747A /* GameWorld.cpp in Sources */,
 				AA01884321ACEB7C00E7747A /* Button.cpp in Sources */,
 				AA01885621ADD42E00E7747A /* Shape.cpp in Sources */,
 			);

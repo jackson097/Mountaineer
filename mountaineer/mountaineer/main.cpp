@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include "MainMenu.hpp"
-#include "GameWorld.hpp"
 #include "Button.hpp"
 #include "Camera.hpp"
 #include "World.hpp"
@@ -24,7 +23,6 @@ GLint winHeight = 700;
 GLint worldOption = 1;
 GLint displayGameWorld;
 MainMenu menu;  // Main menu object
-GameWorld gameWorld; // GameWorld object
 Button startButton;
 Camera myCamera;
 World myWorld;
@@ -91,8 +89,7 @@ void display(void) {
     }
     
     if(worldOption == 2) {  // Game World
-        glClearColor(0.0, 0.0, 0.0, 0.0);
-        gameWorld.displayGameWorld();
+        glClearColor(0.0, 1.0, 1.0, 0.0);
 		myCamera.setProjectionMatrix();
 		myWorld.draw();
 
