@@ -10,7 +10,13 @@
 
 
 
-Button::Button() {};
+Button::Button(){
+	this->x1 = 0;
+	this->x2 = 0;
+	this->y1 = 0;
+	this->y2 = 0;
+
+}
 
 
 void Button::setPoints(GLint x1, GLint y1, GLint x2, GLint y2) {

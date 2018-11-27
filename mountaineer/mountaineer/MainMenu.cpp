@@ -12,6 +12,7 @@ void MainMenu::displayMainMenu() {
     drawStartButton();
     drawSettingsButton();
     printf("Displaying Main Menu... \n");
+    glutPostRedisplay();
 }
 
 
@@ -26,6 +27,8 @@ void MainMenu::drawStartButton() {
     glColor3f(1.0, 0.0, 0.0);
     startButton.setPoints((winWidth/6)*3.5, (winHeight/10)*8, (winWidth/6)*2.5, (winHeight/10)*9);
     startButton.draw();
+    glutPostRedisplay();
+
     
 }
 
