@@ -3,7 +3,7 @@
 #include "MainMenu.hpp"
 
 extern GLint winWidth, winHeight;
-extern Button startButton, settingsButton;
+extern Button startButton;
 
 
 

@@ -23,7 +23,7 @@ GLint worldOption = 1;
 GLint displayGameWorld;
 MainMenu menu;  // Main menu object
 GameWorld gameWorld; // GameWorld object
-Button startButton, settingsButton;
+Button startButton;
 
 
 
