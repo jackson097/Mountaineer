@@ -1,7 +1,12 @@
 #ifndef CVECTOR_H
 #define CVECTOR_H
 
+#if __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 #include "Point.hpp"
 
 class Vector {

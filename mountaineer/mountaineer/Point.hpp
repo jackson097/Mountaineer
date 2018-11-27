@@ -1,7 +1,12 @@
 #ifndef CPOINT_H
 #define CPOINT_H
 
+#if __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 
 class Point{
 public:

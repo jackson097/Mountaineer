@@ -145,18 +145,20 @@ void Cube::draw()
     glPopMatrix();
 }
 
+
 bool Cube::isFrontface(int faceindex, Camera camera) {
-//	GLfloat v[4];
-//	v[0] = faceNormal[faceindex][0];
-//	v[1] = faceNormal[faceindex][1];
-//	v[2] = faceNormal[faceindex][2];
-//	v[3] = 0.0;
-//
-//	mc.multiplyVector(v);
-//	return (camera.ref.x - camera.eye.x)*v[0] + (camera.ref.y - camera.eye.y)*v[1] + (camera.ref.z - camera.eye.z) *v[2] < 0;
+	GLfloat v[4];
+	v[0] = faceNormal[faceindex][0];
+	v[1] = faceNormal[faceindex][1];
+	v[2] = faceNormal[faceindex][2];
+	v[3] = 0.0;
+
+	mc.multiplyVector(v);
+	return (camera.ref.x - camera.eye.x)*v[0] + (camera.ref.y - camera.eye.y)*v[1] + (camera.ref.z - camera.eye.z) *v[2] < 0;
 
 
 }
+
 
 //GLfloat Cube::getShade(int faceindex, Light light){
 //	GLfloat shade = 1;

@@ -3,7 +3,7 @@
 #include "Matrix.hpp"
 
 
-bool DEBUG = false;
+//bool DEBUG = false;
 
 Camera::Camera() {
 	setDefaultCamera();

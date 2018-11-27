@@ -2,7 +2,12 @@
 #ifndef CCAMERA_H
 #define CCAMERA_H
 
+#if __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 #include "Point.hpp"
 #include "Vector.hpp"
 
