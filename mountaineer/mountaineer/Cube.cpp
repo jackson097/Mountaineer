@@ -47,71 +47,13 @@ Cube::Cube()
 
 }
 
+
+
 void Cube::draw_face(int i)
 {
-//
-//	if(textured){
-//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//			glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-//			glPushMatrix();
-////			glRotated(xAngle, 1.0,0.0,0.0);
-////			glRotated(yAngle, 0.0,1.0,0.0);
-////			glRotated(zAngle, 0.0,0.0,1.0);
-//
-//			glBindTexture(GL_TEXTURE_2D,0); 	// top face:  checkerboard
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(-1.0f, 1.0f, -1.0f);
-//			glTexCoord2f(1.0, 0.0); glVertex3f(-1.0f, 1.0f,  1.0f);
-//			glTexCoord2f(1.0, 1.0); glVertex3f( 1.0f, 1.0f,  1.0f);
-//			glTexCoord2f(0.0, 1.0); glVertex3f( 1.0f, 1.0f, -1.0f);
-//			glEnd();
-//
-//			glBindTexture(GL_TEXTURE_2D,1); 	// right face: mandrill
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(1.0f, -1.0f,  1.0f);
-//			glTexCoord2f(1.0, 0.0); glVertex3f(1.0f, -1.0f, -1.0f);
-//			glTexCoord2f(1.0, 1.0); glVertex3f(1.0f,  1.0f, -1.0f);
-//			glTexCoord2f(0.0, 1.0); glVertex3f(1.0f,  1.0f,  1.0f);
-//			glEnd();
-//
-//			glBindTexture(GL_TEXTURE_2D,2); 	// left face: sun
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(-1.0f, 1.0f,  -1.0f);
-//			glTexCoord2f(1.0, 0.0); glVertex3f(-1.0f, 1.0f, 1.0f);
-//			glTexCoord2f(1.0, 1.0); glVertex3f(-1.0f, -1.0f, 1.0f);
-//			glTexCoord2f(0.0, 1.0); glVertex3f(-1.0f,  -1.0f,  -1.0f);
-//			glEnd();
-//
-//			glBindTexture(GL_TEXTURE_2D,3);  // earth
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(1.0f, -1.0f, 1.0f);
-//			glTexCoord2f(1.0, 0.0); glVertex3f(-1.0f, -1.0f, 1.0f);
-//			glTexCoord2f(1.0, 1.0); glVertex3f(-1.0f, -1.0f,  -1.0f);
-//			glTexCoord2f(0.0, 1.0); glVertex3f(1.0f, -1.0f,  -1.0f);
-//			glEnd();
-//
-//			glBindTexture(GL_TEXTURE_2D,4); 	// box front: moon
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(1.0f, 1.0f, 1.0f);
-//			glTexCoord2f(1.0, 0.0); glVertex3f(1.0f, -1.0f, 1.0f);
-//			glTexCoord2f(1.0, 1.0); glVertex3f(-1.0f, -1.0f, 1.0f);
-//			glTexCoord2f(0.0, 1.0); glVertex3f(-1.0f, 1.0f, 1.0f);
-//			glEnd();
-//
-//			glBindTexture(GL_TEXTURE_2D,5); 	// box back  red
-//			glBegin(GL_QUADS);
-//			glTexCoord2f(0.0, 0.0); glVertex3f(-1.0f, 1.0f, -1.0f);
-//			glTexCoord2f(2.0, 0.0); glVertex3f(1.0f, 1.0f, -1.0f);
-//			glTexCoord2f(2.0, 2.0); glVertex3f(1.0f, -1.0f, -1.0f);
-//			glTexCoord2f(0.0, 2.0); glVertex3f(-1.0f, -1.0f, -1.0f);
-//			glEnd();
-//
-//		//write this
-//
-//	}else{
 
-			glColor3f(faceColor[i][0], faceColor[i][1], faceColor[i][2]);
 
+    glColor3f(faceColor[i][0], faceColor[i][1], faceColor[i][2]);
 
 	glBegin(GL_POLYGON);
 	glVertex3fv(vertex[face[i][0]]);
@@ -120,6 +62,9 @@ void Cube::draw_face(int i)
 	glVertex3fv(vertex[face[i][3]]);
 	glEnd();
 }
+
+
+
 
 void Cube::drawMC()
 {
@@ -160,25 +105,5 @@ bool Cube::isFrontface(int faceindex, Camera camera) {
 }
 
 
-//GLfloat Cube::getShade(int faceindex, Light light){
-//	GLfloat shade = 1;
-//
-//		GLfloat v[4], s[3], temp;
-//		s[0] = light.getMC().mat[0][3] - vertex[face[faceindex][0]][0];
-//		s[1] = light.getMC().mat[1][3] - vertex[face[faceindex][0]][1];
-//		s[2] = light.getMC().mat[2][3] - vertex[face[faceindex][0]][2];
-//
-//		temp = sqrt(s[0] *s[0] + s[1]*s[1] + s[2]*s[2]);
-//		s[0] = s[0]/temp;
-//		s[1] = s[1]/temp;
-//		s[2] = s[2]/temp;
-//		v[0] = faceNormal[faceindex][0];
-//
-//		return 0.0;
-//
-//
-//
-//
-//}
 
 
