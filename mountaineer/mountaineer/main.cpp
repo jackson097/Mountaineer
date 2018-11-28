@@ -34,12 +34,18 @@ void MyKeyboardFunc(unsigned char Key, int x, int y){
 	Shape *sshapep = myWorld.list[0];
 	GLfloat rx, ry, rz;
 	if(Key == 'a'){
-		sshapep->translate(-0.05,0,0);
+		sshapep->translate(-0.05,0.0,0.0);
 
 	}else if(Key == 'd'){
 		sshapep->translate(0.05, 0, 0);
 
-	}else if(Key == 'q'){
+    }else if(Key == 'w'){
+        sshapep->translate(0.0, 0.05, 0.0);
+        
+    }else if(Key == 's'){
+        sshapep->translate(0.0, -0.05, 0.0);
+        
+    }else if(Key == 'q'){
 		rx = sshapep->getMC().mat[0][0];
 		ry = sshapep->getMC().mat[1][0];
 		rz = sshapep->getMC().mat[2][0];
@@ -49,11 +55,28 @@ void MyKeyboardFunc(unsigned char Key, int x, int y){
 		ry = sshapep->getMC().mat[1][0];
 		rz = sshapep->getMC().mat[2][0];
 		sshapep->rotateMC(rx, ry, rz, 2);
-
-
 	}
-
 }
+
+
+
+void MyArrowFunc(int Key, int x, int y){
+    Shape *sshapep = myWorld.list[0];
+    if(Key == GLUT_KEY_LEFT){
+        sshapep->translate(-0.05,0.0,0.0);
+        
+    }else if(Key == GLUT_KEY_RIGHT){
+        sshapep->translate(0.05, 0, 0);
+        
+    }else if(Key == GLUT_KEY_UP){
+        sshapep->translate(0.0, 0.05, 0.0);
+        
+    }else if(Key == GLUT_KEY_DOWN){
+        sshapep->translate(0.0, -0.05, 0.0);
+    }
+}
+
+
 
 
 void init(void) {
@@ -64,7 +87,6 @@ void init(void) {
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
-    glutKeyboardFunc(MyKeyboardFunc);
 
 	myCamera.setDefaultCamera();       // initialize camera
 	myWorld.list[0]->translate(0,-2,0);
@@ -144,6 +166,8 @@ int main(int argc, char** argv) {
     init();
     glutDisplayFunc(display);
     glutMouseFunc(mouseAction);
+    glutSpecialFunc(MyArrowFunc);
+    glutKeyboardFunc(MyKeyboardFunc);
     glutMainLoop();
     return 0;
 }
