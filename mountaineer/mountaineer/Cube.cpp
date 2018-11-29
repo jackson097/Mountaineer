@@ -27,12 +27,12 @@ Cube::Cube()
 	face[4][0] = 3; face[4][1] = 2; face[4][2] = 6; face[4][3] = 7;
 	face[5][0] = 0; face[5][1] = 3; face[5][2] = 7; face[5][3] = 4;
 
-	faceColor[0][0] = 1.0; faceColor[0][1] = 0.0; faceColor[0][2] = 0.0;
-	faceColor[1][0] = 0.0; faceColor[1][1] = 1.0; faceColor[1][2] = 0.0;
-	faceColor[2][0] = 0.0; faceColor[2][1] = 0.0; faceColor[2][2] = 1.0;
-	faceColor[3][0] = 1.0; faceColor[3][1] = 1.0; faceColor[3][2] = 0.0;
-	faceColor[4][0] = 1.0; faceColor[4][1] = 0.0; faceColor[4][2] = 1.0;
-	faceColor[5][0] = 0.0; faceColor[5][1] = 1.0; faceColor[5][2] = 1.0;
+	faceColor[0][0] = 1.0; faceColor[0][1] = 1.0; faceColor[0][2] = 0.0;
+	faceColor[1][0] = 1.0; faceColor[1][1] = 0.0; faceColor[1][2] = 0.0;
+	faceColor[2][0] = 1.0; faceColor[2][1] = 1.0; faceColor[2][2] = 0.0;
+	faceColor[3][0] = 1.0; faceColor[3][1] = 0.0; faceColor[3][2] = 0.0;
+	faceColor[4][0] = 1.0; faceColor[4][1] = 1.0; faceColor[4][2] = 0.0;
+	faceColor[5][0] = 1.0; faceColor[5][1] = 0.0; faceColor[5][2] = 0.0;
 
 	faceNormal[0][0] = 0.0; faceNormal[0][1] = 0.0; faceNormal[0][2] = -1.0;
 	faceNormal[1][0] = 0.0; faceNormal[1][1] = 0.0; faceNormal[1][2] = 1.0;

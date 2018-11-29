@@ -179,7 +179,7 @@ void display(void) {
     }
     
     if(worldOption == 2) {  // Game World
-        glClearColor(0.0, 1.0, 1.0, 0.0);
+        glClearColor(0.4, 1.0, 1.0, 0.0);
 		myCamera.setProjectionMatrix();
 		myWorld.draw();
 
