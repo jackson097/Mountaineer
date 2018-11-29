@@ -5,7 +5,6 @@
 
 #if __APPLE__
 #include <GLUT/glut.h>
-//#include <GLFW/glfw3.h>
 #else
 #include <GL/glut.h>
 #endif
@@ -152,11 +151,12 @@ void init(void) {
     glutInitWindowPosition(200, 400);
     glutInitWindowSize(winWidth, winHeight);
     glutCreateWindow("Mountaineer");
-    //glfwCreateWindow(640, 480, "My Title", NULL, NULL);
     glMatrixMode(GL_PROJECTION);
+    glEnable(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
-
 	myCamera.setDefaultCamera();       // initialize camera
 	myWorld.list[0]->translate(0,-2,0);
     glutPostRedisplay();
@@ -208,9 +208,7 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
 
 void mouseAction(int button, int action, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
-        printf("Clicked at %d, %d\n", x, y);
         if(worldOption == 1 && x < startButton.x1 && x > startButton.x2 && y > 554 && y < 621) {  // Start Button clicked
-            menu.startButtonClicked();
             displayGameWorld = 1;
         }
     }
