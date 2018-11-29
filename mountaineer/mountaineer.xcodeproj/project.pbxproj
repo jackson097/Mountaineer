@@ -16,6 +16,8 @@
 		AA01885621ADD42E00E7747A /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01884C21ADD42E00E7747A /* Shape.cpp */; };
 		AA01885721ADD42E00E7747A /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01884E21ADD42E00E7747A /* Vector.cpp */; };
 		AA01885821ADD42E00E7747A /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01885021ADD42E00E7747A /* World.cpp */; };
+		AA01885A21AF1F4700E7747A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885921AF1F4700E7747A /* GLKit.framework */; };
+		AA01885C21AF230000E7747A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885B21AF230000E7747A /* OpenCL.framework */; };
 		AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAAB14BD21A5FF8700B22D5B /* main.cpp */; };
 		AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */; };
 		AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C721A5FFD400B22D5B /* GLUT.framework */; };
@@ -52,6 +54,8 @@
 		AA01884F21ADD42E00E7747A /* Vector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
 		AA01885021ADD42E00E7747A /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		AA01885121ADD42E00E7747A /* World.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = World.hpp; sourceTree = "<group>"; };
+		AA01885921AF1F4700E7747A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		AA01885B21AF230000E7747A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		AAAB14BA21A5FF8700B22D5B /* mountaineer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mountaineer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB14BD21A5FF8700B22D5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -63,7 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA01885C21AF230000E7747A /* OpenCL.framework in Frameworks */,
 				AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */,
+				AA01885A21AF1F4700E7747A /* GLKit.framework in Frameworks */,
 				AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +105,8 @@
 		AAAB14C421A5FFCC00B22D5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA01885B21AF230000E7747A /* OpenCL.framework */,
+				AA01885921AF1F4700E7747A /* GLKit.framework */,
 				AAAB14C721A5FFD400B22D5B /* GLUT.framework */,
 				AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */,
 			);
@@ -295,6 +303,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -303,6 +313,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
