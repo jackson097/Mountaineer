@@ -5,6 +5,7 @@
 
 #if __APPLE__
 #include <GLUT/glut.h>
+//#include <GLFW/glfw3.h>
 #else
 #include <GL/glut.h>
 #endif
@@ -130,19 +131,46 @@ void SpecialKeysUp(int key, int x, int y) {
 void Update() {
 
     if (upPressed == 100) {
-        sshapep->translate(0.0, 0.1, 0.0);
+        sshapep->translate(0.0, 0.002, 0.0);
     }
     if(downPressed == 100) {
-        sshapep->translate(0.0, -0.1, 0.0);
+        sshapep->translate(0.0, -0.002, 0.0);
     }
     if(leftPressed == 100) {
-         sshapep->translate(-0.1,0.0,0.0);
+         sshapep->translate(-0.002,0.0,0.0);
     }
     if(rightPressed == 100){
-        sshapep->translate(0.1, 0, 0);
+        sshapep->translate(0.002, 0, 0);
     }
 }
 
+void physics(void){
+	int i = 1;
+	int j = 3;
+	int timeFactor = 1; // temporary for the speed up w.r.t time
+	for(; i < j; i++){
+
+		int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
+		Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
+		GLfloat x = temp->getX();
+		GLfloat y = temp->getY();
+		temp = myWorld.list[1];
+		GLfloat x1 = temp->getX();
+		GLfloat y1 = temp->getY();
+		temp = myWorld.list[2];
+		GLfloat x2 = temp->getX();
+		GLfloat y2 = temp->getY();
+		printf("p:(%.1f, %.1f)", x, y);
+		printf("o1: (%.1f, %.1f)", x1, y1);
+		printf("o2: (%.1f, %.1f)\n", x2, y2);
+
+		if(c == 1){
+			myWorld.list[i]->translate(0,15, 0);
+		}
+		myWorld.list[i]->translate(0, -0.0002 *timeFactor, 0);
+	}
+
+}
 
 
 
@@ -151,12 +179,11 @@ void init(void) {
     glutInitWindowPosition(200, 400);
     glutInitWindowSize(winWidth, winHeight);
     glutCreateWindow("Mountaineer");
+    //glfwCreateWindow(640, 480, "My Title", NULL, NULL);
     glMatrixMode(GL_PROJECTION);
-    glEnable(GL_BACK);
-    glEnable(GL_CULL_FACE);
-    glEnable(GL_DEPTH_TEST);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
+
 	myCamera.setDefaultCamera();       // initialize camera
 	myWorld.list[0]->translate(0,-2,0);
     glutPostRedisplay();
@@ -182,6 +209,7 @@ void display(void) {
         glClearColor(0.0, 1.0, 1.0, 0.0);
 		myCamera.setProjectionMatrix();
 		myWorld.draw();
+		physics();
 
         glFlush();
         glutSwapBuffers();
@@ -208,7 +236,9 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
 
 void mouseAction(int button, int action, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
+        printf("Clicked at %d, %d\n", x, y);
         if(worldOption == 1 && x < startButton.x1 && x > startButton.x2 && y > 554 && y < 621) {  // Start Button clicked
+            menu.startButtonClicked();
             displayGameWorld = 1;
         }
     }

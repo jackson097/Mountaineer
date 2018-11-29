@@ -41,7 +41,9 @@ public:
 	void reset();   // a function that resets the shape transformation matrix
 	virtual void draw() = 0; // draw function must be overwritten
 	void rotateRelative(GLfloat x0, GLfloat y0, GLfloat z0, GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle);
-
+	int checkCollision( Shape *obstacle);
+	GLfloat getX();
+	GLfloat getY();
 };
 
 #endif
