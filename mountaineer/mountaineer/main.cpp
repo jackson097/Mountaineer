@@ -5,15 +5,19 @@
 
 #if __APPLE__
 #include <GLUT/glut.h>
+//#include <GLFW/glfw3.h>
 #else
 #include <GL/glut.h>
 #endif
+
 
 #include <iostream>
 #include "MainMenu.hpp"
 #include "Button.hpp"
 #include "Camera.hpp"
 #include "World.hpp"
+
+
 
 
 
@@ -27,23 +31,36 @@ Button startButton;
 Camera myCamera;
 World myWorld;
 
+GLint upPressed = 2;
+GLint downPressed = 2;
+GLint leftPressed = 2;
+GLint rightPressed = 2;
+
+Shape *sshapep = myWorld.list[0];
+
+
+
+
+
+
+
+
 
 
 
 void MyKeyboardFunc(unsigned char Key, int x, int y){
-	Shape *sshapep = myWorld.list[0];
 	GLfloat rx, ry, rz;
 	if(Key == 'a'){
-		sshapep->translate(-0.05,0.0,0.0);
+        leftPressed = 100;
 
-	}else if(Key == 'd'){
-		sshapep->translate(0.05, 0, 0);
+	}if(Key == 'd'){
+        rightPressed = 100;
 
     }else if(Key == 'w'){
-        sshapep->translate(0.0, 0.05, 0.0);
+        upPressed = 100;
         
     }else if(Key == 's'){
-        sshapep->translate(0.0, -0.05, 0.0);
+        downPressed = 100;
         
     }else if(Key == 'q'){
 		rx = sshapep->getMC().mat[0][0];
@@ -59,20 +76,71 @@ void MyKeyboardFunc(unsigned char Key, int x, int y){
 }
 
 
+void MyKeyboardUpFunc(unsigned char key, int x, int y) {
+    if(key == 'a'){
+        leftPressed = 2;
+        
+    }if(key == 'd'){
+        rightPressed = 2;
+        
+    }else if(key == 'w'){
+        upPressed = 2;
+        
+    }else if(key == 's'){
+        downPressed = 2;
+    }
+}
 
-void MyArrowFunc(int Key, int x, int y){
-    Shape *sshapep = myWorld.list[0];
+
+
+void MyArrowFunc(int Key, int x, int y) {
+    
     if(Key == GLUT_KEY_LEFT){
-        sshapep->translate(-0.05,0.0,0.0);
+        leftPressed = 100;
         
     }else if(Key == GLUT_KEY_RIGHT){
-        sshapep->translate(0.05, 0, 0);
+        rightPressed = 100;
         
     }else if(Key == GLUT_KEY_UP){
-        sshapep->translate(0.0, 0.05, 0.0);
+        upPressed = 100;
         
     }else if(Key == GLUT_KEY_DOWN){
-        sshapep->translate(0.0, -0.05, 0.0);
+        downPressed = 100;
+    }
+}
+
+
+
+void SpecialKeysUp(int key, int x, int y) {
+    
+    if(key == GLUT_KEY_LEFT){
+        leftPressed = 2;
+        
+    }else if(key == GLUT_KEY_RIGHT){
+        rightPressed = 2;
+        
+    }else if(key == GLUT_KEY_UP){
+        upPressed = 2;
+        
+    }else if(key == GLUT_KEY_DOWN){
+        downPressed = 2;
+    }
+}
+
+
+void Update() {
+
+    if (upPressed == 100) {
+        sshapep->translate(0.0, 0.1, 0.0);
+    }
+    if(downPressed == 100) {
+        sshapep->translate(0.0, -0.1, 0.0);
+    }
+    if(leftPressed == 100) {
+         sshapep->translate(-0.1,0.0,0.0);
+    }
+    if(rightPressed == 100){
+        sshapep->translate(0.1, 0, 0);
     }
 }
 
@@ -84,6 +152,7 @@ void init(void) {
     glutInitWindowPosition(200, 400);
     glutInitWindowSize(winWidth, winHeight);
     glutCreateWindow("Mountaineer");
+    //glfwCreateWindow(640, 480, "My Title", NULL, NULL);
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -101,7 +170,6 @@ void init(void) {
 
 void display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //printf("WORLD OPTION = %d\n", worldOption);
     
     // World Options
     if(worldOption == 1) {   // Main Menu World
@@ -166,8 +234,11 @@ int main(int argc, char** argv) {
     init();
     glutDisplayFunc(display);
     glutMouseFunc(mouseAction);
-    glutSpecialFunc(MyArrowFunc);
     glutKeyboardFunc(MyKeyboardFunc);
+    glutSpecialFunc(MyArrowFunc);
+    glutSpecialUpFunc(SpecialKeysUp);
+    glutKeyboardUpFunc(MyKeyboardUpFunc);
+    glutIdleFunc(Update);
     glutMainLoop();
     return 0;
 }
