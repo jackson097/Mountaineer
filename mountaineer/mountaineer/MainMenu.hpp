@@ -29,11 +29,9 @@ class MainMenu {
 public:
     void displayMainMenu(); // displays the main menu
     void startButtonClicked();  // opens the gameworld
-    void settingsButtonClicked();  // opens settings
 
 protected:
     void drawStartButton(); // draws the start button
-    void drawSettingsButton();  // draws the settings button
     void drawTitle();   // draws the title of the main menu
 };
 
