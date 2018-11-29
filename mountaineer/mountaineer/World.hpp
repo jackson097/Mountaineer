@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "Cube.hpp"
+#include "Character.hpp"
 //#include "Pyramid.hpp"
 //#include "House.hpp" not needed yet
 

@@ -7,8 +7,8 @@
 World::World() {
 	objnum = 1; // number of object
 	list[0] = (Shape*) malloc( sizeof(Shape*) * objnum);  // array to hold object pointers
-	list[0] = new Cube();
-	list[0]->scaleChange(-0.3);
+	list[0] = new Character();
+	list[0]->scaleChange(-0.5);
 
 }
 
