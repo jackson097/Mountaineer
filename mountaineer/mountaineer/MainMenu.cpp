@@ -30,4 +30,9 @@ void MainMenu::drawStartButton() {
 }
 
 
+void MainMenu::startButtonClicked() {
+
+}
+
+
 
