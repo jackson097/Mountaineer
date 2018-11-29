@@ -5,7 +5,6 @@
 
 #if __APPLE__
 #include <GLUT/glut.h>
-//#include <GLFW/glfw3.h>
 #else
 #include <GL/glut.h>
 #endif
@@ -131,16 +130,16 @@ void SpecialKeysUp(int key, int x, int y) {
 void Update() {
 
     if (upPressed == 100) {
-        sshapep->translate(0.0, 0.002, 0.0);
+        sshapep->translate(0.0, 0.08, 0.0);
     }
     if(downPressed == 100) {
-        sshapep->translate(0.0, -0.002, 0.0);
+        sshapep->translate(0.0, -0.08, 0.0);
     }
     if(leftPressed == 100) {
-         sshapep->translate(-0.002,0.0,0.0);
+         sshapep->translate(-0.08,0.0,0.0);
     }
     if(rightPressed == 100){
-        sshapep->translate(0.002, 0, 0);
+        sshapep->translate(0.08, 0, 0);
     }
 }
 
@@ -179,12 +178,15 @@ void init(void) {
     glutInitWindowPosition(200, 400);
     glutInitWindowSize(winWidth, winHeight);
     glutCreateWindow("Mountaineer");
-    //glfwCreateWindow(640, 480, "My Title", NULL, NULL);
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
-
-	myCamera.setDefaultCamera();       // initialize camera
+    //Backface Test
+    glEnable(GL_BACK);
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
+    // Camera setup
+	myCamera.setDefaultCamera();
 	myWorld.list[0]->translate(0,-2,0);
     glutPostRedisplay();
 
