@@ -7,8 +7,8 @@
 #include "Cube.hpp"
 #include "Character.hpp"
 #include "Button.hpp"
-//#include "Pyramid.hpp"
-//#include "House.hpp" not needed yet
+#include "Sphere.hpp"
+#include "Mountain.hpp"
 
 class World {
 public:
