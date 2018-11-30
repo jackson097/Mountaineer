@@ -1,16 +1,16 @@
 To Do:
 
 - Stefan figure your github out
-- Put it all together (spinning sphere, character, falling objects, make objects smaller maybe?) // <- mostly done by Noah, object size on the way
+- Put it all together (spinning sphere)
 - Pause menu (Jackson)
 - score shown as player plays, highscore stored while app is open (Noah)
 - screen that shows up when game over, gives option to restart or quit
-- make game get harder as time goes on // <- boulder speedup implemented, brainstorm other ways for difficulty and smooth out randomX() func.
+- smooth out randomX() func for boulders.
 - figure out what axis we want him staying on when he moves
 - make him fall off screen fast when he falls of mountain //<= we could try to aim for the old-school mario death animation maybe?
 - Textures (needs to be done by Noah or Stefan)
 - Sounds (music and sounds when he dies)
-
+- Add a file that stores highscores
 
 Optional:
 - Unlock characters when you reach a score
