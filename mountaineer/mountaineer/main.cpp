@@ -19,6 +19,11 @@
 
 
 
+/**
+        - MENU CHANGES WHEN SPEED GETS  HIGH - FIX
+        - FIGURE OUT QUIT
+ */
+
 
 
 // Global Variables
@@ -42,6 +47,9 @@ GLint rightPressed = 2;
 GLint paused = 2;
 GLint pauseFlag = 2;
 
+GLint resetFlag = 2;
+GLint resumeFlag = 2;
+
 
 Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
@@ -55,6 +63,7 @@ GLfloat translateConstant2 = 0.04;
 GLfloat translateConstant = 0.002;
 GLfloat translateConstant2 = 0.0004;
 #endif
+
 
 
 
@@ -86,10 +95,18 @@ void MyKeyboardFunc(unsigned char Key, int x, int y){
             sshapep->rotateMC(rx, ry, rz, 2);
             
         }else if (Key == 27) {
-            paused = 3;
+            if(worldOption == 2) {
+                glutIdleFunc(NULL);
+                paused = 3;
+            }
+            
         }
     }
 }
+
+
+
+
 
 
 void MyKeyboardUpFunc(unsigned char key, int x, int y) {
@@ -108,6 +125,9 @@ void MyKeyboardUpFunc(unsigned char key, int x, int y) {
         }
     }
 }
+
+
+
 
 
 
@@ -131,6 +151,9 @@ void MyArrowFunc(int Key, int x, int y) {
 
 
 
+
+
+
 void SpecialKeysUp(int key, int x, int y) {
     if(worldOption == 2) {
         if(key == GLUT_KEY_LEFT){
@@ -147,6 +170,8 @@ void SpecialKeysUp(int key, int x, int y) {
         }
     }
 }
+
+
 
 
 void Update() {
@@ -213,24 +238,58 @@ void physics(void){
 
 
 void pauseGame() {
-    glutIdleFunc(NULL);
     if(pauseFlag == 2) {
         glClearColor(0.0, 0.0, 0.0, 0.0);
         
         myCamera.eye.set(0, 0, 11);
         myCamera.setProjectionMatrix();
         
+        
         myWorld.list[0]->translate(20.0,0.0,0.0);
         myWorld.list[1]->translate(20.0,0.0,0.0);
         myWorld.list[2]->translate(20.0,0.0,0.0);
         
-        // Add myworld.list[3].. for buttons as cubes and delete them when I resume
-        
-        
+        resetFlag = 2;
         pauseFlag = 3;
     }
 }
+
+
+
+
+void restartGame() {
+    if(resetFlag == 2) {
+        paused = 2; // unpause
+        pauseFlag = 2;
+        timeFactor = 1;
+        resetFlag = 3;
+        
+        // Move characters and cubes back
+        myWorld.list[0]->translate(-20.0,0.0,0.0);
+        myWorld.list[1]->translate(-20.0,0.0,0.0);
+        myWorld.list[2]->translate(-20.0,0.0,0.0);
+        
+        // Move boulders up to top
+        myWorld.list[1]->translate(0.0,10.0,0.0);
+        myWorld.list[2]->translate(0.0,10.0,0.0);
+    }
+    // set score = 0  =====================================================
+}
+
+
+
 void resumeGame() {
+    if(resumeFlag == 3) {
+        // Move characters and cubes back
+        myWorld.list[0]->translate(-20.0,0.0,0.0);
+        myWorld.list[1]->translate(-20.0,0.0,0.0);
+        myWorld.list[2]->translate(-20.0,0.0,0.0);
+        resumeFlag = 2;
+        paused = 2; // unpause
+        pauseFlag = 2;
+        resetFlag = 3;
+    }
+    
     glClearColor(0.4, 1.0, 1.0, 0.0);
     myCamera.eye.set(5, 5, 10);
     myCamera.setProjectionMatrix();
@@ -241,16 +300,17 @@ void resumeGame() {
 }
 
 
-
-void restartGame() {
-    
-}
-
-
-
 void quitGame() {
+   /*
+    for (int i = 0; i<myWorld.objnum; i++) {
+        delete myWorld.list[i];
+    }
     
+    exit (0);
+    */
 }
+
+
 
 
 
@@ -337,16 +397,18 @@ void mouseAction(int button, int action, int x, int y) {
         }
         
         if(paused == 3) {   // If we're on pause menu
-            // Check if a button is pressed
-            //            if(/* button pressed*/) {
-            //                restartGame();
-            //            }
-            //            if(/* button pressed*/) {
-            //                resumeGame();
-            //            }
-            //            if(/* button pressed*/) {
-            //                quitGame();
-            //            }
+            //  Check if a button is pressed
+            if(x > 360 && x < 440 && y > 310 && y < 385) {
+                restartGame();
+            }
+            if(x > 360 && x < 440 && y > 133 && y < 205) {
+                resumeFlag = 3;
+                resumeGame();
+            }
+            
+            if(x > 360 && x < 441 && y > 490 && y < 560) {
+                quitGame();
+            }
         }
 
         
