@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "Cube.hpp"
 #include "Character.hpp"
+#include "Button.hpp"
 //#include "Pyramid.hpp"
 //#include "House.hpp" not needed yet
 
