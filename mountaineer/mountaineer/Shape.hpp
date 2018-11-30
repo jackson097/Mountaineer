@@ -47,6 +47,7 @@ public:
 	int outOfBounds();
 	void randomX();
 	void randomY();
+	void stayInBound();
 };
 
 #endif

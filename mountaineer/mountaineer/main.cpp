@@ -16,13 +16,13 @@
 #include "Button.hpp"
 #include "Camera.hpp"
 #include "World.hpp"
+#include "PauseMenu.hpp"
 
 
 
 
 
 // Global Variables
-
 GLint winWidth = 800;
 GLint winHeight = 700;
 GLint worldOption = 1;
@@ -34,17 +34,16 @@ Button quitButton;
 Button restartButton;
 Camera myCamera;
 World myWorld;
+//PauseMenu pauseMenu;
 
 GLint upPressed = 2;
 GLint downPressed = 2;
 GLint leftPressed = 2;
 GLint rightPressed = 2;
 
-GLint paused = 2;
-GLint pauseFlag = 2;
-
 Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
+int MAX_BOULDERS = 5;
 
 
 #if __APPLE__
@@ -60,116 +59,109 @@ GLfloat translateConstant2 = 0.0004;
 
 void MyKeyboardFunc(unsigned char Key, int x, int y){
 	GLfloat rx, ry, rz;
-    if(worldOption == 2) {
-        if(Key == 'a'){
-            leftPressed = 100;
-            
-        }if(Key == 'd'){
-            rightPressed = 100;
-            
-        }else if(Key == 'w'){
-            upPressed = 100;
-            
-        }else if(Key == 's'){
-            downPressed = 100;
-            
-        }else if(Key == 'q'){
-            rx = sshapep->getMC().mat[0][0];
-            ry = sshapep->getMC().mat[1][0];
-            rz = sshapep->getMC().mat[2][0];
-            sshapep->rotateMC(rx, ry, rz, -2);
-        }else if(Key == 'e'){
-            rx = sshapep->getMC().mat[0][0];
-            ry = sshapep->getMC().mat[1][0];
-            rz = sshapep->getMC().mat[2][0];
-            sshapep->rotateMC(rx, ry, rz, 2);
-            
-        }else if (Key == 27) {
-            paused = 3;
-        }
-    }
+	if(Key == 'a'){
+        leftPressed = 100;
 
+	}if(Key == 'd'){
+        rightPressed = 100;
+
+    }else if(Key == 'w'){
+        upPressed = 100;
+        
+    }else if(Key == 's'){
+        downPressed = 100;
+        
+    }else if(Key == 'q'){
+		rx = sshapep->getMC().mat[0][0];
+		ry = sshapep->getMC().mat[1][0];
+		rz = sshapep->getMC().mat[2][0];
+		sshapep->rotateMC(rx, ry, rz, -2);
+	}else if(Key == 'e'){
+		rx = sshapep->getMC().mat[0][0];
+		ry = sshapep->getMC().mat[1][0];
+		rz = sshapep->getMC().mat[2][0];
+		sshapep->rotateMC(rx, ry, rz, 2);
+	}
 }
 
 
 void MyKeyboardUpFunc(unsigned char key, int x, int y) {
-    if(worldOption == 2){
-        if(key == 'a'){
-            leftPressed = 2;
-            
-        }if(key == 'd'){
-            rightPressed = 2;
-            
-        }else if(key == 'w'){
-            upPressed = 2;
-            
-        }else if(key == 's'){
-            downPressed = 2;
-        }
+    if(key == 'a'){
+        leftPressed = 2;
+        
+    }if(key == 'd'){
+        rightPressed = 2;
+        
+    }else if(key == 'w'){
+        upPressed = 2;
+        
+    }else if(key == 's'){
+        downPressed = 2;
     }
 }
 
 
 
 void MyArrowFunc(int Key, int x, int y) {
-    if(worldOption == 2){
-        if(Key == GLUT_KEY_LEFT){
-            leftPressed = 100;
-            
-        }else if(Key == GLUT_KEY_RIGHT){
-            rightPressed = 100;
-            
-        }else if(Key == GLUT_KEY_UP){
-            upPressed = 100;
-            
-        }else if(Key == GLUT_KEY_DOWN){
-            downPressed = 100;
-        }
+    
+    if(Key == GLUT_KEY_LEFT){
+        leftPressed = 100;
+        
+    }else if(Key == GLUT_KEY_RIGHT){
+        rightPressed = 100;
+        
+    }else if(Key == GLUT_KEY_UP){
+        upPressed = 100;
+        
+    }else if(Key == GLUT_KEY_DOWN){
+        downPressed = 100;
     }
-
 }
 
 
 
 void SpecialKeysUp(int key, int x, int y) {
-    if(worldOption == 2) {
-        if(key == GLUT_KEY_LEFT){
-            leftPressed = 2;
-            
-        }else if(key == GLUT_KEY_RIGHT){
-            rightPressed = 2;
-            
-        }else if(key == GLUT_KEY_UP){
-            upPressed = 2;
-            
-        }else if(key == GLUT_KEY_DOWN){
-            downPressed = 2;
-        }
+    
+    if(key == GLUT_KEY_LEFT){
+        leftPressed = 2;
+        
+    }else if(key == GLUT_KEY_RIGHT){
+        rightPressed = 2;
+        
+    }else if(key == GLUT_KEY_UP){
+        upPressed = 2;
+        
+    }else if(key == GLUT_KEY_DOWN){
+        downPressed = 2;
     }
-
 }
 
 
 void Update() {
-    if(worldOption == 2) {
-        if (upPressed == 100) {
-            sshapep->translate(0.0, translateConstant, 0.0);
-        }
-        if(downPressed == 100) {
-            sshapep->translate(0.0, -translateConstant, 0.0);
-        }
-        if(leftPressed == 100) {
-            sshapep->translate(-translateConstant,0.0,0.0);
-        }
-        if(rightPressed == 100){
-            sshapep->translate(translateConstant, 0, 0);
-        }
+
+    if (upPressed == 100) {
+        sshapep->translate(0.0, translateConstant, 0.0);
+    }
+    if(downPressed == 100) {
+        sshapep->translate(0.0, -translateConstant, 0.0);
+    }
+    if(leftPressed == 100) {
+         sshapep->translate(-translateConstant,0.0,0.0);
+    }
+    if(rightPressed == 100){
+        sshapep->translate(translateConstant, 0, 0);
     }
 }
 
 void physics(void){
 	int i = 1;
 	int j = 3;
+	myWorld.list[0]->stayInBound();
+	if(timeFactor / 10 < 3){
+		j = 3 + int(timeFactor /10);
+	}else{
+		j = 6;
+	}
 	 // temporary for the speed up w.r.t time
 	for(; i < j; i++){
 
@@ -186,6 +178,7 @@ void physics(void){
 		printf("p:(%.1f, %.1f) ", x, y);
 		printf("o1: (%.1f, %.1f) ", x1, y1);
 		printf("o2: (%.1f, %.1f)\n", x2, y2);
+
 		if(myWorld.list[i]->outOfBounds()){
 			myWorld.list[i]->randomX();
 			myWorld.list[i]->translate(0,15,0);
@@ -197,48 +190,6 @@ void physics(void){
 		myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
 	}
 
-}
-
-
-
-void pauseGame() {
-    glutIdleFunc(NULL);
-    if(pauseFlag == 2) {
-        glClearColor(0.0, 0.0, 0.0, 0.0);
-        
-        myCamera.eye.set(0, 0, 11);
-        myCamera.setProjectionMatrix();
-        
-        myWorld.list[0]->translate(20.0,0.0,0.0);
-        myWorld.list[1]->translate(20.0,0.0,0.0);
-        myWorld.list[2]->translate(20.0,0.0,0.0);
-        
-        // Add myworld.list[3].. for buttons as cubes and delete them when I resume
-        
-        
-        pauseFlag = 3;
-    }
-}
-
-
-void resumeGame() {
-    glClearColor(0.4, 1.0, 1.0, 0.0);
-    myCamera.eye.set(5, 5, 10);
-    myCamera.setProjectionMatrix();
-    glutIdleFunc(Update);
-    physics();
-    timeFactor = timeFactor + 0.0001;
-    printf("%.6f\n", timeFactor);
-}
-
-
-void restartGame() {
-    
-}
-
-
-void quitGame() {
-    
 }
 
 
@@ -270,27 +221,32 @@ void display(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     // World Options
-    if(worldOption == 1) {   // Main Menu
+    if(worldOption == 1) {   // Main Menu World
         menu.displayMainMenu();
         glFlush();
         glutSwapBuffers();
     }
     
-    if(worldOption == 2) {      // Game World
-        
-        if(paused == 3) {
-            pauseGame();
-            
-        }else {
-            resumeGame();
-        }
-        
-        myWorld.draw();
+    if(worldOption == 2) {  // Game World
+        glClearColor(0.4, 1.0, 1.0, 0.0);
+		myCamera.setProjectionMatrix();
+		myWorld.draw();
+		physics();
+		timeFactor = timeFactor + 0.0001;
+		printf("%.6f\n", timeFactor);
+
 
         glFlush();
         glutSwapBuffers();
     }
     
+//   if(worldOption == 3) { // Pause Game
+//        glClearColor(0.0, 0.0, 0.0, 0.0);
+//        pauseMenu.display();
+//
+//       glFlush();
+//       glutSwapBuffers();
+//    }
     glutPostRedisplay();
 
 }
@@ -324,19 +280,6 @@ void mouseAction(int button, int action, int x, int y) {
         if (displayGameWorld == 1) {
             worldOption = 2;    // Start game
         }
-        if(paused == 3) {   // If we're on pause menu
-            // Check if a button is pressed
-//            if(/* button pressed*/) {
-//                restartGame();
-//            }
-//            if(/* button pressed*/) {
-//                resumeGame();
-//            }
-//            if(/* button pressed*/) {
-//                quitGame();
-//            }
-        }
- 
     }
     glutPostRedisplay();
 }
@@ -357,6 +300,7 @@ int main(int argc, char** argv) {
     glutSpecialFunc(MyArrowFunc);
     glutSpecialUpFunc(SpecialKeysUp);
     glutKeyboardUpFunc(MyKeyboardUpFunc);
+    glutIdleFunc(Update);
     glutMainLoop();
     return 0;
 }
