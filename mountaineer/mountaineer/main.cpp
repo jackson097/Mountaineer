@@ -42,6 +42,7 @@ GLint leftPressed = 2;
 GLint rightPressed = 2;
 
 Shape *sshapep = myWorld.list[0];
+float timeFactor = 1;
 
 
 
@@ -130,23 +131,23 @@ void SpecialKeysUp(int key, int x, int y) {
 void Update() {
 
     if (upPressed == 100) {
-        sshapep->translate(0.0, 0.1, 0.0);
+        sshapep->translate(0.0, 0.002, 0.0);
     }
     if(downPressed == 100) {
-        sshapep->translate(0.0, -0.1, 0.0);
+        sshapep->translate(0.0, -0.002, 0.0);
     }
     if(leftPressed == 100) {
-         sshapep->translate(-0.1,0.0,0.0);
+         sshapep->translate(-0.002,0.0,0.0);
     }
     if(rightPressed == 100){
-        sshapep->translate(0.1, 0, 0);
+        sshapep->translate(0.002, 0, 0);
     }
 }
 
 void physics(void){
 	int i = 1;
 	int j = 3;
-	int timeFactor = 1; // temporary for the speed up w.r.t time
+	 // temporary for the speed up w.r.t time
 	for(; i < j; i++){
 
 		int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
@@ -162,11 +163,15 @@ void physics(void){
 		printf("p:(%.1f, %.1f) ", x, y);
 		printf("o1: (%.1f, %.1f) ", x1, y1);
 		printf("o2: (%.1f, %.1f)\n", x2, y2);
-
-		if(c == 1){
-			myWorld.list[i]->translate(0,15, 0);
+		if(myWorld.list[i]->outOfBounds()){
+			myWorld.list[i]->randomX();
+			myWorld.list[i]->translate(0,15,0);
+			myWorld.list[i]->randomY();
 		}
-		myWorld.list[i]->translate(0, -0.0002 *timeFactor, 0);
+		if(c == 1){
+			myWorld.list[i]->translate(0,5, 0);
+		}
+		myWorld.list[i]->translate(0, -0.0004 *timeFactor, 0);
 	}
 
 }
@@ -211,6 +216,9 @@ void display(void) {
 		myCamera.setProjectionMatrix();
 		myWorld.draw();
 		physics();
+		timeFactor = timeFactor + 0.0001;
+		printf("%.6f\n", timeFactor);
+
 
         glFlush();
         glutSwapBuffers();

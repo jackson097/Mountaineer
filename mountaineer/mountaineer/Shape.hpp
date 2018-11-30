@@ -44,6 +44,9 @@ public:
 	int checkCollision( Shape *obstacle);
 	GLfloat getX();
 	GLfloat getY();
+	int outOfBounds();
+	void randomX();
+	void randomY();
 };
 
 #endif

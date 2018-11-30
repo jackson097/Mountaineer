@@ -1,4 +1,5 @@
 #include "Shape.hpp"
+#include <stdlib.h>
 
 Shape::Shape() {
 	reset();
@@ -103,6 +104,27 @@ GLfloat Shape::getX(){
 }
 GLfloat Shape::getY(){
 	return mc.mat[1][3];
+}
+
+int Shape::outOfBounds(){
+	return mc.mat[1][3] < -5;
+}
+void Shape::randomX(){
+	GLfloat offset = rand() % 6 -3 ;
+
+		mc.mat[0][3] = offset;
+
+}
+
+void Shape::randomY(){
+	GLfloat offset = rand() %3;
+	GLfloat flip = rand()%1;
+	if(flip > 0.5){
+		mc.mat[1][3] += offset;
+	}else{
+		mc.mat[1][3] -= offset;
+	}
+
 }
 
 
