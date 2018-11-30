@@ -23,6 +23,7 @@ public:
 	Sphere();
 	~Sphere();
 	void set_colour(GLfloat, GLfloat, GLfloat);
+	void set_radius(GLfloat);
 	void draw();
 };
 

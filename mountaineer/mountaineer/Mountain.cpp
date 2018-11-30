@@ -17,6 +17,8 @@ Mountain::Mountain()
 void Mountain::draw()
 {
 
+	sphere.set_colour(0.5, 0.5, 0.5);
+	sphere.set_radius(10.0);
 	sphere.draw();
 }
 

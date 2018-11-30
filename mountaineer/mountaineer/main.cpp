@@ -171,6 +171,7 @@ void Update() {
 
 
 void physics(void){
+	GLfloat rx, ry, rz;
 	int i = 1;
 	int j = 3;
 	myWorld.list[0]->stayInBound();
@@ -205,6 +206,10 @@ void physics(void){
 			myWorld.list[i]->translate(0,5, 0);
 		}
 		myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
+		rx = myWorld.list[3]->getMC().mat[0][0];
+		ry = myWorld.list[3]->getMC().mat[1][0];
+		rz = myWorld.list[3]->getMC().mat[2][0];
+		myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
 	}
 
 }

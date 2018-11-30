@@ -7,9 +7,9 @@ Sphere::Sphere() {
 	splices = 15;
 	stacks = 15;
 	quad = gluNewQuadric();
-	r = 100;
-	g = 70;
-	b = 30;
+	r = 0.5;
+	g = 0.5;
+	b = 0.5;
 }
 
 Sphere::~Sphere() {
@@ -20,6 +20,10 @@ void Sphere::set_colour(GLfloat red, GLfloat green, GLfloat blue){
 	r = red;
 	g = green;
 	b = blue;
+}
+
+void Sphere::set_radius(GLfloat rad){
+	radius = rad;
 }
 
 void Sphere::draw() {
