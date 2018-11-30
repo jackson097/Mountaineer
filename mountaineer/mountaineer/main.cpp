@@ -232,6 +232,14 @@ void resumeGame() {
 }
 
 
+void restartGame() {
+    
+}
+
+
+void quitGame() {
+    
+}
 
 
 void init(void) {
@@ -316,6 +324,19 @@ void mouseAction(int button, int action, int x, int y) {
         if (displayGameWorld == 1) {
             worldOption = 2;    // Start game
         }
+        if(paused == 3) {   // If we're on pause menu
+            // Check if a button is pressed
+//            if(/* button pressed*/) {
+//                restartGame();
+//            }
+//            if(/* button pressed*/) {
+//                resumeGame();
+//            }
+//            if(/* button pressed*/) {
+//                quitGame();
+//            }
+        }
+ 
     }
     glutPostRedisplay();
 }
@@ -336,7 +357,6 @@ int main(int argc, char** argv) {
     glutSpecialFunc(MyArrowFunc);
     glutSpecialUpFunc(SpecialKeysUp);
     glutKeyboardUpFunc(MyKeyboardUpFunc);
-   // glutIdleFunc(Update);
     glutMainLoop();
     return 0;
 }

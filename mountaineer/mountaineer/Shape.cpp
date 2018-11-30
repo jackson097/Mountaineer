@@ -86,6 +86,7 @@ void Shape::rotateRelative(GLfloat x0, GLfloat y0, GLfloat z0, GLfloat rx, GLflo
 	mc.mat[2][3] = v[2]+z0;
 	mc.mat[3][3] = 1;
 }
+
 int Shape::checkCollision(Shape *obstacle){
 	//		printf("p:(%.1f, %.1f)", x, y);
 	//		printf("o1: (%.1f, %.1f)", x1, y1);

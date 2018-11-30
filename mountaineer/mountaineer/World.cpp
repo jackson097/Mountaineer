@@ -42,7 +42,7 @@ World::~World(){
     }
     
     else if (paused == 2) {
-        for (int i = 0; i<3; i++)
+        for (int i = 0; i<objnum-3; i++)        // (objNum - 3) because this one doesn't include pause buttons
             delete list[i];
         
         free(list);
@@ -57,7 +57,7 @@ void World::draw() {
         }
     }
     else if(paused == 2) {
-        for (int i = 0; i<3; i++) {
+        for (int i = 0; i<objnum-3; i++) {
             list[i]->draw();
         }
     }
@@ -74,7 +74,7 @@ void World::reset() {
     }
     
     else if(paused == 2) {
-        for (int i = 0; i<3; i++)
+        for (int i = 0; i<objnum-3; i++)
             list[i]->reset();
     }
 }
