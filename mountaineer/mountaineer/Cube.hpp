@@ -25,7 +25,6 @@ public:
 	Cube();	void draw();
 	void drawMC();
 	bool isFrontface(int faceindex, Camera camera);
-	//GLfloat getShade(int faceindex, Light light);
 
 private:
 	void draw_face(int);
