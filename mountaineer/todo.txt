@@ -1,8 +1,7 @@
 To Do:
 
-- Stefan figure your github out
-- Put it all together (spinning sphere)
-- Pause menu, button on game menu, stop and resume game, restart, quit (Jackson)
+- Put it all together (spinning sphere) (Stefan)
+- Pause menu, figure out how to resume game, figure out how to identify when the button (cube) is clicked (Jackson)
 - score shown as player plays, highscore stored while app is open (Noah)
 - screen that shows up when game over, gives option to restart or quit
 - smooth out randomX() func for boulders.
