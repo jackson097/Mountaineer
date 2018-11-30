@@ -45,6 +45,14 @@ Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
 
 
+#if __APPLE__
+GLfloat translateConstant = 0.15;
+GLfloat translateConstant2 = 0.04;
+#else
+GLfloat translateConstant = 0.002;
+GLfloat translateConstant2 = 0.0004;
+#endif
+
 
 
 
@@ -131,16 +139,16 @@ void SpecialKeysUp(int key, int x, int y) {
 void Update() {
 
     if (upPressed == 100) {
-        sshapep->translate(0.0, 0.002, 0.0);
+        sshapep->translate(0.0, translateConstant, 0.0);
     }
     if(downPressed == 100) {
-        sshapep->translate(0.0, -0.002, 0.0);
+        sshapep->translate(0.0, -translateConstant, 0.0);
     }
     if(leftPressed == 100) {
-         sshapep->translate(-0.002,0.0,0.0);
+         sshapep->translate(-translateConstant,0.0,0.0);
     }
     if(rightPressed == 100){
-        sshapep->translate(0.002, 0, 0);
+        sshapep->translate(translateConstant, 0, 0);
     }
 }
 
@@ -171,7 +179,7 @@ void physics(void){
 		if(c == 1){
 			myWorld.list[i]->translate(0,5, 0);
 		}
-		myWorld.list[i]->translate(0, -0.0004 *timeFactor, 0);
+		myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
 	}
 
 }
