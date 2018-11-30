@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <unistd.h>
 
 #if __APPLE__
 #include <GLUT/glut.h>
@@ -15,6 +16,7 @@
 #include "Button.hpp"
 #include "Camera.hpp"
 #include "World.hpp"
+#include "PauseMenu.hpp"
 
 
 
@@ -27,8 +29,12 @@ GLint worldOption = 1;
 GLint displayGameWorld;
 MainMenu menu;  // Main menu object
 Button startButton;
+Button resumeButton;
+Button quitButton;
+Button restartButton;
 Camera myCamera;
 World myWorld;
+//PauseMenu pauseMenu;
 
 GLint upPressed = 2;
 GLint downPressed = 2;
@@ -36,12 +42,6 @@ GLint leftPressed = 2;
 GLint rightPressed = 2;
 
 Shape *sshapep = myWorld.list[0];
-
-
-
-
-
-
 
 
 
@@ -130,16 +130,16 @@ void SpecialKeysUp(int key, int x, int y) {
 void Update() {
 
     if (upPressed == 100) {
-        sshapep->translate(0.0, 0.08, 0.0);
+        sshapep->translate(0.0, 0.1, 0.0);
     }
     if(downPressed == 100) {
-        sshapep->translate(0.0, -0.08, 0.0);
+        sshapep->translate(0.0, -0.1, 0.0);
     }
     if(leftPressed == 100) {
-         sshapep->translate(-0.08,0.0,0.0);
+         sshapep->translate(-0.1,0.0,0.0);
     }
     if(rightPressed == 100){
-        sshapep->translate(0.08, 0, 0);
+        sshapep->translate(0.1, 0, 0);
     }
 }
 
@@ -159,8 +159,8 @@ void physics(void){
 		temp = myWorld.list[2];
 		GLfloat x2 = temp->getX();
 		GLfloat y2 = temp->getY();
-		printf("p:(%.1f, %.1f)", x, y);
-		printf("o1: (%.1f, %.1f)", x1, y1);
+		printf("p:(%.1f, %.1f) ", x, y);
+		printf("o1: (%.1f, %.1f) ", x1, y1);
 		printf("o2: (%.1f, %.1f)\n", x2, y2);
 
 		if(c == 1){
@@ -170,7 +170,6 @@ void physics(void){
 	}
 
 }
-
 
 
 void init(void) {
@@ -216,6 +215,14 @@ void display(void) {
         glFlush();
         glutSwapBuffers();
     }
+    
+//   if(worldOption == 3) { // Pause Game
+//        glClearColor(0.0, 0.0, 0.0, 0.0);
+//        pauseMenu.display();
+//       
+//       glFlush();
+//       glutSwapBuffers();
+//    }
     glutPostRedisplay();
 
 }
@@ -245,9 +252,10 @@ void mouseAction(int button, int action, int x, int y) {
         }
     }
     
-    if(button == GLUT_LEFT_BUTTON && action == GLUT_UP && displayGameWorld == 1) {
-        worldOption = 2;    // Start game
-
+    if(button == GLUT_LEFT_BUTTON && action == GLUT_UP) {
+        if (displayGameWorld == 1) {
+            worldOption = 2;    // Start game
+        }
     }
     glutPostRedisplay();
 }

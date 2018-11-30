@@ -19,6 +19,7 @@
 		AA01885A21AF1F4700E7747A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885921AF1F4700E7747A /* GLKit.framework */; };
 		AA01885C21AF230000E7747A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885B21AF230000E7747A /* OpenCL.framework */; };
 		AA01885F21B0473700E7747A /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01885D21B0473700E7747A /* Character.cpp */; };
+		AA01886221B0ADDA00E7747A /* PauseMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01886021B0ADDA00E7747A /* PauseMenu.cpp */; };
 		AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAAB14BD21A5FF8700B22D5B /* main.cpp */; };
 		AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */; };
 		AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C721A5FFD400B22D5B /* GLUT.framework */; };
@@ -59,6 +60,8 @@
 		AA01885B21AF230000E7747A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		AA01885D21B0473700E7747A /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		AA01885E21B0473700E7747A /* Character.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Character.hpp; sourceTree = "<group>"; };
+		AA01886021B0ADDA00E7747A /* PauseMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseMenu.cpp; sourceTree = "<group>"; };
+		AA01886121B0ADDA00E7747A /* PauseMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PauseMenu.hpp; sourceTree = "<group>"; };
 		AAAB14BA21A5FF8700B22D5B /* mountaineer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mountaineer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB14BD21A5FF8700B22D5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				AAAB14BD21A5FF8700B22D5B /* main.cpp */,
 				AA01883B21A7120900E7747A /* MainMenu.cpp */,
 				AA01883C21A7120900E7747A /* MainMenu.hpp */,
+				AA01886021B0ADDA00E7747A /* PauseMenu.cpp */,
+				AA01886121B0ADDA00E7747A /* PauseMenu.hpp */,
 				AA01884121ACEB7C00E7747A /* Button.cpp */,
 				AA01884221ACEB7C00E7747A /* Button.hpp */,
 				AA01885D21B0473700E7747A /* Character.cpp */,
@@ -206,6 +211,7 @@
 				AA01885721ADD42E00E7747A /* Vector.cpp in Sources */,
 				AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */,
 				AA01883D21A7120900E7747A /* MainMenu.cpp in Sources */,
+				AA01886221B0ADDA00E7747A /* PauseMenu.cpp in Sources */,
 				AA01885521ADD42E00E7747A /* Point.cpp in Sources */,
 				AA01885821ADD42E00E7747A /* World.cpp in Sources */,
 				AA01885221ADD42E00E7747A /* Camera.cpp in Sources */,
