@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <math.h>
 #include <unistd.h>
-
+#include <stdio.h>
+#include <stdlib.h>
 #if __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -57,7 +58,16 @@ GLfloat translateConstant2 = 0.0004;
 #endif
 
 
-
+void output(float x, float y, float z, float r, float g, float b, char *string)
+{
+  glColor3f( r, g, b );
+  glRasterPos3f(x, y, z);
+  int len, i;
+  len = (int)strlen(string);
+  for (i = 0; i < len; i++) {
+    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
+  }
+}
 
 void MyKeyboardFunc(unsigned char Key, int x, int y){
     GLfloat rx, ry, rz;
@@ -171,6 +181,7 @@ void Update() {
 
 
 void physics(void){
+
 	GLfloat rx, ry, rz;
 	int i = 1;
 	int j = 3;
@@ -180,38 +191,37 @@ void physics(void){
 	}else{
 		j = 6;
 	}
-	 // temporary for the speed up w.r.t time
 	for(; i < j; i++){
-
-		int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
-		Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
-		GLfloat x = temp->getX();
-		GLfloat y = temp->getY();
-		temp = myWorld.list[1];
-		GLfloat x1 = temp->getX();
-		GLfloat y1 = temp->getY();
-		temp = myWorld.list[2];
-		GLfloat x2 = temp->getX();
-		GLfloat y2 = temp->getY();
-		printf("p:(%.1f, %.1f) ", x, y);
-		printf("o1: (%.1f, %.1f) ", x1, y1);
-		printf("o2: (%.1f, %.1f)\n", x2, y2);
-
-		if(myWorld.list[i]->outOfBounds()){
-			myWorld.list[i]->randomX();
-			myWorld.list[i]->translate(0,15,0);
-			myWorld.list[i]->randomY();
+		if(i != 3){
+			int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
+			Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
+			GLfloat x = temp->getX();
+			GLfloat y = temp->getY();
+			temp = myWorld.list[1];
+			GLfloat x1 = temp->getX();
+			GLfloat y1 = temp->getY();
+			temp = myWorld.list[2];
+			GLfloat x2 = temp->getX();
+			GLfloat y2 = temp->getY();
+			//printf("p:(%.1f, %.1f) ", x, y);
+			//printf("o1: (%.1f, %.1f) ", x1, y1);
+			//printf("o2: (%.1f, %.1f)\n", x2, y2);
+//
+			if(myWorld.list[i]->outOfBounds()){
+				myWorld.list[i]->randomX();
+				myWorld.list[i]->translate(0,15,0);
+				myWorld.list[i]->randomY();
+			}
+			if(c == 1){
+				myWorld.list[i]->translate(0,5, 0);
+			}
+			myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
+			rx = myWorld.list[3]->getMC().mat[0][0];
+			ry = myWorld.list[3]->getMC().mat[1][0];
+			rz = myWorld.list[3]->getMC().mat[2][0];
+			myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
 		}
-		if(c == 1){
-			myWorld.list[i]->translate(0,5, 0);
-		}
-		myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
-		rx = myWorld.list[3]->getMC().mat[0][0];
-		ry = myWorld.list[3]->getMC().mat[1][0];
-		rz = myWorld.list[3]->getMC().mat[2][0];
-		myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
 	}
-
 }
 
 
@@ -242,7 +252,7 @@ void resumeGame() {
     glutIdleFunc(Update);
     physics();
     timeFactor = timeFactor + 0.0001;
-    printf("%.6f\n", timeFactor);
+    //printf("%.6f\n", timeFactor);
 }
 
 
@@ -302,7 +312,12 @@ void display(void) {
         }else {
             resumeGame();
         }
-        
+        char score[100] = {'S','C','O','R','E', ':'};
+        char scoreBuffer[10];
+        itoa(int(timeFactor* 100), scoreBuffer, 10);
+        //score = score + scoreBuffer;
+        output(-4,3.9, 1,1,1,1, score);
+        output(-2,3.99, 1,1,1,1, scoreBuffer);
         myWorld.draw();
         glFlush();
         glutSwapBuffers();
@@ -329,7 +344,7 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
 
 void mouseAction(int button, int action, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
-        printf("Clicked at %d, %d\n", x, y);
+        //printf("Clicked at %d, %d\n", x, y);
         if(worldOption == 1 && x < startButton.x1 && x > startButton.x2 && y > 554 && y < 621) {  // Start Button clicked
             menu.startButtonClicked();
             displayGameWorld = 1;
