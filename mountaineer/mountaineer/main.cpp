@@ -57,13 +57,12 @@ int MAX_BOULDERS = 5;
 
 
 #if __APPLE__
-GLfloat translateConstant = 0.15;
+GLfloat translateConstant = 0.09;
 GLfloat translateConstant2 = 0.04;
 #else
 GLfloat translateConstant = 0.002;
 GLfloat translateConstant2 = 0.0004;
 #endif
-
 
 
 
@@ -196,6 +195,7 @@ void Update() {
 
 
 void physics(void){
+	GLfloat rx, ry, rz;
 	int i = 1;
 	int j = 3;
 	myWorld.list[0]->stayInBound();
@@ -230,6 +230,10 @@ void physics(void){
 			myWorld.list[i]->translate(0,5, 0);
 		}
 		myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
+		rx = myWorld.list[3]->getMC().mat[0][0];
+		ry = myWorld.list[3]->getMC().mat[1][0];
+		rz = myWorld.list[3]->getMC().mat[2][0];
+		myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
 	}
 
 }
@@ -248,6 +252,7 @@ void pauseGame() {
         myWorld.list[0]->translate(20.0,0.0,0.0);
         myWorld.list[1]->translate(20.0,0.0,0.0);
         myWorld.list[2]->translate(20.0,0.0,0.0);
+        myWorld.list[3]->translate(20.0,0.0,0.0);
         
         resetFlag = 2;
         pauseFlag = 3;
@@ -268,12 +273,13 @@ void restartGame() {
         myWorld.list[0]->translate(-20.0,0.0,0.0);
         myWorld.list[1]->translate(-20.0,0.0,0.0);
         myWorld.list[2]->translate(-20.0,0.0,0.0);
+        myWorld.list[3]->translate(-20.0,0.0,0.0);
         
         // Move boulders up to top
         myWorld.list[1]->translate(0.0,10.0,0.0);
         myWorld.list[2]->translate(0.0,10.0,0.0);
     }
-    // set score = 0  =====================================================
+    // SET SCORE = 0  =====================================================
 }
 
 
@@ -284,6 +290,7 @@ void resumeGame() {
         myWorld.list[0]->translate(-20.0,0.0,0.0);
         myWorld.list[1]->translate(-20.0,0.0,0.0);
         myWorld.list[2]->translate(-20.0,0.0,0.0);
+        myWorld.list[3]->translate(-20.0,0.0,0.0);
         resumeFlag = 2;
         paused = 2; // unpause
         pauseFlag = 2;
@@ -295,19 +302,13 @@ void resumeGame() {
     myCamera.setProjectionMatrix();
     glutIdleFunc(Update);
     physics();
-    timeFactor = timeFactor + 0.0001;
+    timeFactor = timeFactor + 0.0005;
     printf("%.6f\n", timeFactor);
 }
 
 
 void quitGame() {
-   /*
-    for (int i = 0; i<myWorld.objnum; i++) {
-        delete myWorld.list[i];
-    }
-    
-    exit (0);
-    */
+//    exit(0);
 }
 
 

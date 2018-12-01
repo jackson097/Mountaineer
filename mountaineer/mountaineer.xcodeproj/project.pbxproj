@@ -19,6 +19,8 @@
 		AA01885A21AF1F4700E7747A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885921AF1F4700E7747A /* GLKit.framework */; };
 		AA01885C21AF230000E7747A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885B21AF230000E7747A /* OpenCL.framework */; };
 		AA01885F21B0473700E7747A /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01885D21B0473700E7747A /* Character.cpp */; };
+		AA01886521B22F4D00E7747A /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01886421B22F4D00E7747A /* Sphere.cpp */; };
+		AA01886721B22F5400E7747A /* Mountain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01886621B22F5400E7747A /* Mountain.cpp */; };
 		AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAAB14BD21A5FF8700B22D5B /* main.cpp */; };
 		AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */; };
 		AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C721A5FFD400B22D5B /* GLUT.framework */; };
@@ -59,6 +61,10 @@
 		AA01885B21AF230000E7747A /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		AA01885D21B0473700E7747A /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
 		AA01885E21B0473700E7747A /* Character.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Character.hpp; sourceTree = "<group>"; };
+		AA01886321B22F4400E7747A /* Sphere.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Sphere.hpp; sourceTree = "<group>"; };
+		AA01886421B22F4D00E7747A /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
+		AA01886621B22F5400E7747A /* Mountain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mountain.cpp; sourceTree = "<group>"; };
+		AA01886821B22F5C00E7747A /* Mountain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mountain.hpp; sourceTree = "<group>"; };
 		AAAB14BA21A5FF8700B22D5B /* mountaineer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mountaineer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB14BD21A5FF8700B22D5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -124,6 +130,10 @@
 				AA01883C21A7120900E7747A /* MainMenu.hpp */,
 				AA01884121ACEB7C00E7747A /* Button.cpp */,
 				AA01884221ACEB7C00E7747A /* Button.hpp */,
+				AA01886421B22F4D00E7747A /* Sphere.cpp */,
+				AA01886321B22F4400E7747A /* Sphere.hpp */,
+				AA01886621B22F5400E7747A /* Mountain.cpp */,
+				AA01886821B22F5C00E7747A /* Mountain.hpp */,
 				AA01885D21B0473700E7747A /* Character.cpp */,
 				AA01885E21B0473700E7747A /* Character.hpp */,
 				AA01884421ADD42E00E7747A /* Camera.cpp */,
@@ -202,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA01885421ADD42E00E7747A /* Matrix.cpp in Sources */,
+				AA01886721B22F5400E7747A /* Mountain.cpp in Sources */,
 				AA01885321ADD42E00E7747A /* Cube.cpp in Sources */,
 				AA01885721ADD42E00E7747A /* Vector.cpp in Sources */,
 				AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */,
@@ -211,6 +222,7 @@
 				AA01885221ADD42E00E7747A /* Camera.cpp in Sources */,
 				AA01884321ACEB7C00E7747A /* Button.cpp in Sources */,
 				AA01885F21B0473700E7747A /* Character.cpp in Sources */,
+				AA01886521B22F4D00E7747A /* Sphere.cpp in Sources */,
 				AA01885621ADD42E00E7747A /* Shape.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
