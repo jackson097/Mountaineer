@@ -220,6 +220,14 @@ void physics(void){
 			ry = myWorld.list[3]->getMC().mat[1][0];
 			rz = myWorld.list[3]->getMC().mat[2][0];
 			myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[4]->getMC().mat[0][0];
+			ry = myWorld.list[4]->getMC().mat[1][0];
+			rz = myWorld.list[4]->getMC().mat[2][0];
+			myWorld.list[4]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[5]->getMC().mat[0][0];
+			ry = myWorld.list[5]->getMC().mat[1][0];
+			rz = myWorld.list[5]->getMC().mat[2][0];
+			myWorld.list[5]->rotateMC(rx, ry, rz, 0.02);
 		}
 	}
 }
