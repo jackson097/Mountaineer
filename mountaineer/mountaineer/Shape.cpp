@@ -110,20 +110,17 @@ int Shape::outOfBounds(){
 	return mc.mat[1][3] < -5;
 }
 void Shape::randomX(){
-	GLfloat offset = rand() % 6 -3 ;
+	GLfloat offset = ((float)rand()/ RAND_MAX)*8 -4;
 
 		mc.mat[0][3] = offset;
+
 
 }
 
 void Shape::randomY(){
-	GLfloat offset = rand() %3;
+	GLfloat offset = ((float)rand() / RAND_MAX)*4-2;
 	GLfloat flip = rand()%1;
-	if(flip > 0.5){
-		mc.mat[1][3] += offset;
-	}else{
-		mc.mat[1][3] -= offset;
-	}
+	mc.mat[1][3] += offset;
 
 }
 void Shape::stayInBound(){
