@@ -1,15 +1,19 @@
 To Do:
 
-- Put it all together (spinning sphere) (Stefan)
+- Textured mountain (Stefan)
 - Pause menu, figure out how to resume game, figure out how to identify when the button (cube) is clicked (Jackson)
-- score shown as player plays, highscore stored while app is open (Noah)
-- screen that shows up when game over, gives option to restart or quit
-- smooth out randomX() func for boulders.
-- figure out what axis we want him staying on when he moves
-- make him fall off screen fast when he falls of mountain //<= we could try to aim for the old-school mario death animation maybe?
+- screen that shows up when game over, gives option to restart or quit <-has been set up, need game over menu to be finished 
+- smooth out randomX() func for boulders. <- (Noah)
+- make him fall off screen fast when he falls of mountain //<- need to figure out a way to keep othe resources drawn for animation
 - Textures (needs to be done by Noah or Stefan)
-- Sounds (music and sounds when he dies)
-- Add a file that stores highscores
+- Make boulder super textured spheres rolling down hill 
+- Fixed & worded menuing (Jackson)
+
 
 Optional:
 - Unlock characters when you reach a score
+- Add a file that stores highscores <- moved from to-do to optional for now
+
+Completed:
+- Sounds (music and sounds when he dies) <- [COMPLETED] by stefan?
+- score shown as player plays, highscore stored while app is open (Noah) <- [COMPLETED]
