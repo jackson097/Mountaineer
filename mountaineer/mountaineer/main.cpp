@@ -47,6 +47,8 @@ GLint rightPressed = 2;
 
 GLint paused = 2;
 GLint pauseFlag = 2;
+GLint resumeFlag = 2;
+GLint resetFlag = 2;
 
 
 Shape *sshapep = myWorld.list[0];
@@ -253,36 +255,68 @@ void pauseGame() {
         myCamera.eye.set(0, 0, 11);
         myCamera.setProjectionMatrix();
         
-        myWorld.list[0]->translate(20.0,0.0,0.0);
-        myWorld.list[1]->translate(20.0,0.0,0.0);
-        myWorld.list[2]->translate(20.0,0.0,0.0);
-        
-        // Add myworld.list[3].. for buttons as cubes and delete them when I resume
-        
-        
+        for(int i = 0; i < 6; i++) {
+            myWorld.list[i]->translate(20.0,-20.0,0.0);
+        }
+
+        resetFlag = 2;
         pauseFlag = 3;
     }
 }
+
+
+
+
+
+
+void restartGame() {
+    if(resetFlag == 2) {
+        paused = 2; // unpause
+        pauseFlag = 2;
+        timeFactor = 1;
+        resetFlag = 3;
+        
+        // Move characters and cubes back
+        for(int i = 0; i < 6; i++) {
+            myWorld.list[i]->translate(-20.0,20.0,0.0);
+        }
+        
+        // Move boulders up to top
+        myWorld.list[1]->translate(0.0,10.0,0.0);
+        myWorld.list[2]->translate(0.0,10.0,0.0);
+    }
+    // SET SCORE = 0  =====================================================
+}
+
+
+
+
 void resumeGame() {
+    if(resumeFlag == 3) {
+        // Move characters and cubes back
+        for(int i = 0; i < 6; i++) {
+            myWorld.list[i]->translate(-20.0,20.0,0.0);
+        }
+        resumeFlag = 2;
+        paused = 2; // unpause
+        pauseFlag = 2;
+        resetFlag = 3;
+    }
+    
     glClearColor(0.4, 1.0, 1.0, 0.0);
     myCamera.eye.set(5, 5, 10);
     myCamera.setProjectionMatrix();
     glutIdleFunc(Update);
     physics();
-    timeFactor = timeFactor + 0.0001;
+    timeFactor = timeFactor + 0.0005;
     //printf("%.6f\n", timeFactor);
 }
 
 
 
-void restartGame() {
-    
-}
-
-
 
 void quitGame() {
-    
+    //    exit(0);
 }
 
 
@@ -380,16 +414,18 @@ void mouseAction(int button, int action, int x, int y) {
         }
         
         if(paused == 3) {   // If we're on pause menu
-            // Check if a button is pressed
-            //            if(/* button pressed*/) {
-            //                restartGame();
-            //            }
-            //            if(/* button pressed*/) {
-            //                resumeGame();
-            //            }
-            //            if(/* button pressed*/) {
-            //                quitGame();
-            //            }
+            //  Check if a button is pressed
+            if(x > 360 && x < 440 && y > 310 && y < 385) {
+                restartGame();
+            }
+            if(x > 360 && x < 440 && y > 133 && y < 205) {
+                resumeFlag = 3;
+                resumeGame();
+            }
+            
+            if(x > 360 && x < 441 && y > 490 && y < 560) {
+                quitGame();
+            }
         }
 
         

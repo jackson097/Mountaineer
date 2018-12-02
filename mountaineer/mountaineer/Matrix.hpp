@@ -1,8 +1,4 @@
-/**
- *	file: Matrix.hpp
- *	author: HBF
- *	description: header of Matrix class
- */
+
 
 #ifndef CMATRIX_H
 #define CMATRIX_H

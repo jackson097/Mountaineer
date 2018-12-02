@@ -1,8 +1,14 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include <windows.h>
+//#include <windows.h>
+
+#if __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
+#endif
+
 #include "Shape.hpp"
 
 class Sphere: public Shape {
