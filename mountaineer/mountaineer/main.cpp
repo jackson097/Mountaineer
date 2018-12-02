@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <Windows.h>
+#include <Mmsystem.h>
+//#include <mciapi.h>
 #if __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -13,6 +16,8 @@
 
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "MainMenu.hpp"
 #include "Button.hpp"
 #include "Camera.hpp"
@@ -217,12 +222,22 @@ void physics(void){
 				output(0,0,0,1,1,1,oof);
 				myWorld.list[i]->translate(0,12, 0);
 				health -=1;
+				PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
+				//PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 			}
 			myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
 			rx = myWorld.list[3]->getMC().mat[0][0];
 			ry = myWorld.list[3]->getMC().mat[1][0];
 			rz = myWorld.list[3]->getMC().mat[2][0];
 			myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[4]->getMC().mat[0][0];
+			ry = myWorld.list[4]->getMC().mat[1][0];
+			rz = myWorld.list[4]->getMC().mat[2][0];
+			myWorld.list[4]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[5]->getMC().mat[0][0];
+			ry = myWorld.list[5]->getMC().mat[1][0];
+			rz = myWorld.list[5]->getMC().mat[2][0];
+			myWorld.list[5]->rotateMC(rx, ry, rz, 0.02);
 		}
 	}
 }
@@ -281,6 +296,7 @@ void init(void) {
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
+    PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
     //Backface Test
     glEnable(GL_BACK);
     glEnable(GL_CULL_FACE);
@@ -290,7 +306,7 @@ void init(void) {
 	myWorld.list[0]->translate(0,-2,0);
     glutPostRedisplay();
 
-    
+
 }
 
 
@@ -383,10 +399,6 @@ void mouseAction(int button, int action, int x, int y) {
 
 
 
-
-
-
-
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutReshapeFunc(winReshapeFcn);
@@ -400,4 +412,3 @@ int main(int argc, char** argv) {
     glutMainLoop();
     return 0;
 }
-
