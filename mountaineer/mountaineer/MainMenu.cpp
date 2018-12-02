@@ -8,16 +8,11 @@ extern Button startButton;
 
 
 void MainMenu::displayMainMenu() {
-    drawTitle();
     drawStartButton();
     glutPostRedisplay();
 }
 
 
-
-void MainMenu::drawTitle() {
-    // Learn how to add text OR bitmap file here with logo and title
-}
 
 
 void MainMenu::drawStartButton() {
@@ -28,11 +23,4 @@ void MainMenu::drawStartButton() {
 
     
 }
-
-
-void MainMenu::startButtonClicked() {
-
-}
-
-
 

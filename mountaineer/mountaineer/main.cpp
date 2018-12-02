@@ -249,6 +249,18 @@ void physics(void){
 
 void pauseGame() {
     glutIdleFunc(NULL);
+    
+    // Words on pause buttons
+    char resume[100] = {'R','E','S','U','M', 'E'};
+    output(-0.33,1.8,1, 1,1,1, resume);
+    
+    char reset[100] = {'R','E','S','E','T'};
+    output(-0.26,-0.1,1, 1,1,1, reset);
+    
+    char quit[100] = {'Q','U','I','T'};
+    output(-0.199,-1.92,1, 1,1,1, quit);
+    
+    
     if(pauseFlag == 2) {
         glClearColor(0.0, 0.0, 0.0, 0.0);
         
@@ -261,6 +273,7 @@ void pauseGame() {
 
         resetFlag = 2;
         pauseFlag = 3;
+        
     }
 }
 
@@ -352,10 +365,15 @@ void display(void) {
     
     // World Options
     if(worldOption == 1) {   // Main Menu World
+        
+        char start[100] = {'S','T','A','R','T'};
+        output(370,600,1, 1,1,1, start);
+    
         menu.displayMainMenu();
         glFlush();
         glutSwapBuffers();
     }
+    
     
     if(worldOption == 2) {      // Game World
         
@@ -376,6 +394,8 @@ void display(void) {
 			}else{
 				//death animation and outro to game over screen
 			}
+        
+        
         glFlush();
         glutSwapBuffers();
     }
@@ -403,7 +423,6 @@ void mouseAction(int button, int action, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
         //printf("Clicked at %d, %d\n", x, y);
         if(worldOption == 1 && x < startButton.x1 && x > startButton.x2 && y > 554 && y < 621) {  // Start Button clicked
-            menu.startButtonClicked();
             displayGameWorld = 1;
         }
     }
