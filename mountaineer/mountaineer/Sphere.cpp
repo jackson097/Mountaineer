@@ -1,16 +1,16 @@
 #include "Sphere.hpp"
-
-Sphere::Sphere() {
-	radius = 10.0;
+Sphere::Sphere(float rad, float red,  float green, float blue) {
+	radius = rad;
 	mode = MODE_WIRE;
 	textureID = 0;
 	splices = 15;
 	stacks = 15;
 	quad = gluNewQuadric();
-	r = 0.5;
-	g = 0.5;
-	b = 0.5;
+	r = red;
+	g = green;
+	b = blue;
 }
+
 
 Sphere::~Sphere() {
 	gluDeleteQuadric(quad);
