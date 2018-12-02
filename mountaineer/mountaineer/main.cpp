@@ -34,7 +34,7 @@ Button quitButton;
 Button restartButton;
 Camera myCamera;
 World myWorld;
-
+int health = 3;
 GLint upPressed = 2;
 GLint downPressed = 2;
 GLint leftPressed = 2;
@@ -195,14 +195,14 @@ void physics(void){
 		if(i != 3){
 			int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
 			Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
-			GLfloat x = temp->getX();
-			GLfloat y = temp->getY();
-			temp = myWorld.list[1];
-			GLfloat x1 = temp->getX();
-			GLfloat y1 = temp->getY();
-			temp = myWorld.list[2];
-			GLfloat x2 = temp->getX();
-			GLfloat y2 = temp->getY();
+//			GLfloat x = temp->getX();
+//			GLfloat y = temp->getY();
+//			temp = myWorld.list[1];
+//			GLfloat x1 = temp->getX();
+//			GLfloat y1 = temp->getY();
+//			temp = myWorld.list[2];
+//			GLfloat x2 = temp->getX();
+//			GLfloat y2 = temp->getY();
 			//printf("p:(%.1f, %.1f) ", x, y);
 			//printf("o1: (%.1f, %.1f) ", x1, y1);
 			//printf("o2: (%.1f, %.1f)\n", x2, y2);
@@ -213,21 +213,16 @@ void physics(void){
 				myWorld.list[i]->randomY();
 			}
 			if(c == 1){
-				myWorld.list[i]->translate(0,5, 0);
+				char oof[3] = {'O','O','F'};
+				output(0,0,0,1,1,1,oof);
+				myWorld.list[i]->translate(0,12, 0);
+				health -=1;
 			}
 			myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
 			rx = myWorld.list[3]->getMC().mat[0][0];
 			ry = myWorld.list[3]->getMC().mat[1][0];
 			rz = myWorld.list[3]->getMC().mat[2][0];
 			myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
-			rx = myWorld.list[4]->getMC().mat[0][0];
-			ry = myWorld.list[4]->getMC().mat[1][0];
-			rz = myWorld.list[4]->getMC().mat[2][0];
-			myWorld.list[4]->rotateMC(rx, ry, rz, 0.02);
-			rx = myWorld.list[5]->getMC().mat[0][0];
-			ry = myWorld.list[5]->getMC().mat[1][0];
-			rz = myWorld.list[5]->getMC().mat[2][0];
-			myWorld.list[5]->rotateMC(rx, ry, rz, 0.02);
 		}
 	}
 }
@@ -320,13 +315,17 @@ void display(void) {
         }else {
             resumeGame();
         }
-        char score[100] = {'S','C','O','R','E', ':'};
-        char scoreBuffer[10];
-        itoa(int(timeFactor* 100), scoreBuffer, 10);
-        //score = score + scoreBuffer;
-        output(-4,3.9, 1,1,1,1, score);
-        output(-2,3.99, 1,1,1,1, scoreBuffer);
-        myWorld.draw();
+        if(health > 0){
+			char score[100] = {'S','C','O','R','E', ':'};
+			char scoreBuffer[10];
+			itoa(int(timeFactor* 100), scoreBuffer, 10);
+
+			output(-4,3.9, 1,1,1,1, score);
+			output(-2,3.99, 1,1,1,1, scoreBuffer);
+			myWorld.draw();
+			}else{
+				//death animation and outro to game over screen
+			}
         glFlush();
         glutSwapBuffers();
     }
