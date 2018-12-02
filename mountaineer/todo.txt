@@ -1,12 +1,11 @@
 To Do:
 
 - Textured mountain (Stefan)
-- screen that shows up when game over, gives option to restart or quit <-has been set up, need game over menu to be finished 
-- Score reset when restart clicked, number of lives resets (if that's what we're doing)
-- smooth out randomX() func for boulders. <- (Noah)
+- screen that shows up when game over, gives option to restart or quit <-has been set up, we really need game over menu to be finished 
 - make him fall off screen fast when he falls of mountain //<- need to figure out a way to keep othe resources drawn for animation ( or do we want him to be restricted to the mountain and when he dies the death animation happens)
 - Textures (needs to be done by Noah or Stefan)
-- Make boulder super textured spheres rolling down hill 
+- Make boulders textured
+-beautify start menu
 
 
 Optional:
@@ -19,5 +18,7 @@ Completed:
 - score shown as player plays, highscore stored while app is open (Noah) <- [COMPLETED]
 - Pause menu, figure out how to resume game, figure out how to identify when the button (cube) is clicked (Jackson)
 - Fixed & worded menuing (Jackson)
+- Score reset when restart clicked, number of lives resets (if that's what we're doing) [COMPLETED] (Noah)
+- smooth out randomX() func for boulders. <- [COMPLETED] (Noah)
 
 
