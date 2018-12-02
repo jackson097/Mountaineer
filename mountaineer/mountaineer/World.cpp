@@ -18,22 +18,22 @@ World::World() {
 	list[0] = new Character();
 	list[0]->scaleChange(-0.6);
 
-	list[1] = new Cube();
+	list[1] = new Sphere(0.5,0.8,0.8,0.8);
 	list[1]->translate(-3,0,0);
 	list[1]->scaleChange(-0.6);
     
-	list[2] = new Cube();
+	list[2] = new Sphere(0.5,0.8,0.8,0.8);
 	list[2]->translate(3,0,0);
 	list[2]->scaleChange(-0.6);
     
     // Mountain
-	list[3] = new Sphere();
+	list[3] = new Sphere(10,0.5,0.5,0.5);
 	list[3]->translate(-1.5, -7, -11);
     
-	list[4] = new Sphere();
+	list[4] = new Sphere(10,0.5,0.5, 0.5);
 	list[4]->translate(-4, -12, -11);
     
-	list[5] = new Sphere();
+	list[5] = new Sphere(10,0.5,0.5,0.5);
 	list[5]->translate(1, -2, -11);
     
     
