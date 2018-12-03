@@ -1,7 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-//////////#include <windows.h>
+//#include <windows.h>
 
 #if __APPLE__
 #include <GLUT/glut.h>
@@ -10,6 +10,7 @@
 #endif
 
 #include "Shape.hpp"
+#include "Image.hpp"
 
 class Sphere: public Shape {
 public:
@@ -25,11 +26,13 @@ public:
 	GLfloat r, g, b;
 	GLint splices, stacks;
 	GLuint textureID;
+	Image *texture_image;
 	GLUquadric *quad;
-	Sphere(float rad, float red, float green, float blue);
+	Sphere(float rad, float red, float green, float blue, GLuint text, Image* image);
 	~Sphere();
 	void set_colour(GLfloat, GLfloat, GLfloat);
 	void set_radius(GLfloat);
+	void set_textureID(GLuint);
 	void draw();
 };
 

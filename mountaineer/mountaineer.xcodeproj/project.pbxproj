@@ -20,6 +20,7 @@
 		AA01885C21AF230000E7747A /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA01885B21AF230000E7747A /* OpenCL.framework */; };
 		AA01885F21B0473700E7747A /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01885D21B0473700E7747A /* Character.cpp */; };
 		AA01886F21B4372700E7747A /* Sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01886D21B4372700E7747A /* Sphere.cpp */; };
+		AA01887321B5C6FF00E7747A /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA01887221B5C6FF00E7747A /* Image.cpp */; };
 		AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAAB14BD21A5FF8700B22D5B /* main.cpp */; };
 		AAAB14C621A5FFCC00B22D5B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */; };
 		AAAB14C821A5FFD400B22D5B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAAB14C721A5FFD400B22D5B /* GLUT.framework */; };
@@ -62,6 +63,8 @@
 		AA01886D21B4372700E7747A /* Sphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sphere.cpp; sourceTree = "<group>"; };
 		AA01886E21B4372700E7747A /* Sphere.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Sphere.hpp; sourceTree = "<group>"; };
 		AA01887021B54E0F00E7747A /* MainMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = MainMenu.hpp; path = ../../../../../../.Trash/MainMenu.hpp; sourceTree = "<group>"; };
+		AA01887121B5C6FF00E7747A /* Image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Image.hpp; sourceTree = "<group>"; };
+		AA01887221B5C6FF00E7747A /* Image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Image.cpp; sourceTree = "<group>"; };
 		AAAB14BA21A5FF8700B22D5B /* mountaineer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mountaineer; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAAB14BD21A5FF8700B22D5B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AAAB14C521A5FFCC00B22D5B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -127,6 +130,8 @@
 				AA01887021B54E0F00E7747A /* MainMenu.hpp */,
 				AA01886D21B4372700E7747A /* Sphere.cpp */,
 				AA01886E21B4372700E7747A /* Sphere.hpp */,
+				AA01887121B5C6FF00E7747A /* Image.hpp */,
+				AA01887221B5C6FF00E7747A /* Image.cpp */,
 				AA01884121ACEB7C00E7747A /* Button.cpp */,
 				AA01884221ACEB7C00E7747A /* Button.hpp */,
 				AA01885D21B0473700E7747A /* Character.cpp */,
@@ -207,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA01885421ADD42E00E7747A /* Matrix.cpp in Sources */,
+				AA01887321B5C6FF00E7747A /* Image.cpp in Sources */,
 				AA01885321ADD42E00E7747A /* Cube.cpp in Sources */,
 				AA01885721ADD42E00E7747A /* Vector.cpp in Sources */,
 				AAAB14BE21A5FF8700B22D5B /* main.cpp in Sources */,
