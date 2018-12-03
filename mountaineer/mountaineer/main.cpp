@@ -484,6 +484,7 @@ void display(void) {
             itoa(int(timeFactor* 100), scoreBuffer, 10);
 			char highScore[100] = {'H','I','G','H','S','C','O','R','E', ':'};
 			char highScoreBuffer[10];
+            
 			if(stupid < timeFactor *100){
 				stupid = timeFactor *100;
 			}
@@ -494,6 +495,13 @@ void display(void) {
 
 			output(-4.03,3.7, 1,1,1,1, highScore);
 			output(-2.03,3.79, 1,1,1,1, highScoreBuffer);
+            
+            //LIVESSSSSS
+            char lives[100] = {'L','I','V','E','S',':'};
+            char livesBuffer[100];
+            itoa(health, livesBuffer, 10);
+            output(-4,3.5, 1,1,1,1, lives);
+            output(-2,3.59, 1,1,1,1, livesBuffer);
 
 			myWorld.draw();
             
