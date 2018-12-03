@@ -5,9 +5,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
-#include <Mmsystem.h>
-#include <mciapi.h>
+/////////#include <Windows.h>
+/////////#include <Mmsystem.h>
+/////////#include <mciapi.h>
 #if __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -185,7 +185,7 @@ void physics(void){
 				output(0,0,0,1,1,1,oof);
 				myWorld.list[i]->translate(0,12, 0);
 				health -=1;
-				PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
+/////////				PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
 				//PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 
 			}
@@ -371,7 +371,7 @@ void init(void) {
     glMatrixMode(GL_PROJECTION);
     gluOrtho2D(0.0, winWidth, winHeight, 0.0);
     glClearColor(0.0, 0.0, 0.0, 1.0);
-    PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+/////////    PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
     //Backface Test
     glEnable(GL_BACK);
     glEnable(GL_CULL_FACE);
@@ -481,7 +481,7 @@ void display(void) {
         if(health > 0){
 			char score[100] = {'S','C','O','R','E', ':'};
 			char scoreBuffer[10];
-            itoa(int(timeFactor* 100), scoreBuffer, 10);
+/////////            itoa(int(timeFactor* 100), scoreBuffer, 10);
 			char highScore[100] = {'H','I','G','H','S','C','O','R','E', ':'};
 			char highScoreBuffer[10];
             
@@ -489,7 +489,7 @@ void display(void) {
 				stupid = timeFactor *100;
 			}
 
-			itoa(int(stupid), highScoreBuffer, 10);
+/////////			itoa(int(stupid), highScoreBuffer, 10);
 			output(-4,3.9, 1,1,1,1, score);
 			output(-2,3.99, 1,1,1,1, scoreBuffer);
 
@@ -499,7 +499,7 @@ void display(void) {
             //LIVESSSSSS
             char lives[100] = {'L','I','V','E','S',':'};
             char livesBuffer[100];
-            itoa(health, livesBuffer, 10);
+/////////            itoa(health, livesBuffer, 10);
             output(-4,3.5, 1,1,1,1, lives);
             output(-2,3.59, 1,1,1,1, livesBuffer);
 
