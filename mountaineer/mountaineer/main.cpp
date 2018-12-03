@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <Windows.h>
 #include <Mmsystem.h>
-//#include <mciapi.h>
+#include <mciapi.h>
 #if __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -30,12 +30,19 @@ GLint winWidth = 800;
 GLint winHeight = 700;
 GLint worldOption = 1;
 GLint displayGameWorld;
+GLint objNum;
 MainMenu menu;  // Main menu object
-Button startButton, resumeButton, quitButton, restartButton;
+Button startButton;
+Button resumeButton;
+Button quitButton;
+Button restartButton;
 Camera myCamera;
 World myWorld;
 int health = 3;
-GLint objNum, upPressed = 2, downPressed = 2, leftPressed = 2, rightPressed = 2, BOULDER_MAX = 18, paused = 2, pauseFlag = 2, resumeFlag = 2, resetFlag = 2, restartFlag = 2, gameOverFlag = 2;
+
+GLint upPressed = 2, downPressed = 2, leftPressed = 2, rightPressed = 2, BOULDER_MAX = 18, paused = 2, pauseFlag = 2, resumeFlag = 2, resetFlag = 2, restartFlag = 2, gameOverFlag = 2;
+
+
 Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
 float speedFactor = 1;
@@ -169,7 +176,7 @@ void physics(void){
 				myWorld.list[i]->randomY();
 			}
             // If character is alive and the game isn't over yet
-			if(c == 1 && gameOverFlag == 2){
+			if(c == 1){
 				char oof[3] = {'O','O','F'};
 				output(0,0,0,1,1,1,oof);
 				myWorld.list[i]->translate(0,12, 0);
@@ -244,7 +251,7 @@ void restartGame() {
         pauseFlag = 2;
         timeFactor = 1;
         resetFlag = 3;
-        health=3;
+        health = 3;
         gameOverFlag = 2;
         
         if(restartFlag == 2) {  // If not on gameOver menu
