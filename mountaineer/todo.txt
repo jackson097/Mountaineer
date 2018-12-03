@@ -1,11 +1,13 @@
 To Do:
 
 - Textured mountain (Stefan)
+- Logo on main screen (beautify main screen)
 - make him fall off screen fast when he falls of mountain //<- need to figure out a way to keep othe resources drawn for animation ( or do we want him to be restricted to the mountain and when he dies the death animation happens)
-- Textures (needs to be done by Noah or Stefan)
 - Make boulders textured
--beautify start menu
-- can we make score slower?
+- Noah can you make the score go slower?
+- Should boulders look more like they roll down the hill?
+-  # of lives should be displayed on screen
+- Different size boulders?
 
 
 
