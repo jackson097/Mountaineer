@@ -7,10 +7,6 @@ extern GLint paused;
 extern GLint objNum;
 
 
-// THE OBJNUM IS INCLUDING THE CUBES THAT APPEAR TO BE 2D BECAUSE OF THE ANGLE IN THE PAUSE MENU, THATS WHY I
-// HAVE IF STATEMENTS IN EVERY METHOD HERE
-
-
 World::World() {
 
 	objnum = 11; // number of object

@@ -1,7 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include <windows.h>
+//////////#include <windows.h>
 
 #if __APPLE__
 #include <GLUT/glut.h>

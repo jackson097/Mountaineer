@@ -40,6 +40,7 @@ Camera myCamera;
 World myWorld;
 int health = 3;
 
+
 GLint upPressed = 2, downPressed = 2, leftPressed = 2, rightPressed = 2, BOULDER_MAX = 18, paused = 2, pauseFlag = 2, resumeFlag = 2, resetFlag = 2, restartFlag = 2, gameOverFlag = 2;
 
 
@@ -48,6 +49,9 @@ float timeFactor = 1;
 float speedFactor = 1;
 float stupid = 1;
 int MAX_BOULDERS = 5;
+
+
+GLint speedFactor1, speedfactor2, speedfactor3, speedyboi;
 
 
 #if __APPLE__
@@ -176,7 +180,7 @@ void physics(void){
 				myWorld.list[i]->randomY();
 			}
             // If character is alive and the game isn't over yet
-			if(c == 1){
+			if(c == 1 && stupid >= timeFactor *100){
 				char oof[3] = {'O','O','F'};
 				output(0,0,0,1,1,1,oof);
 				myWorld.list[i]->translate(0,12, 0);
@@ -190,8 +194,19 @@ void physics(void){
 			}else{
 				speedFactor = BOULDER_MAX;
 			}
-
-			myWorld.list[i]->translate(0, -translateConstant2 *speedFactor, 0);
+        
+            // Make boulders all different speeds
+            if(i == 1) {
+                speedyboi = 1.0;
+            } else if (i == 2) {
+                speedyboi = 1.7;
+            } else if (i == 3) {
+                speedyboi = 1.2;
+            } else if (i == 4) {
+                speedyboi = 1.4;
+            }
+        
+			myWorld.list[i]->translate(0, -translateConstant2 * speedFactor * speedyboi, 0);
 			rx = myWorld.list[5]->getMC().mat[0][0];
 			ry = myWorld.list[5]->getMC().mat[1][0];
 			rz = myWorld.list[5]->getMC().mat[2][0];
