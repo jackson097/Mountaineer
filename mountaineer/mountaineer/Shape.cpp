@@ -126,8 +126,8 @@ void Shape::randomY(){
 void Shape::stayInBound(){
 	if(mc.mat[0][3] > 4){
 		mc.mat[0][3] = 4;
-	}else if(mc.mat[0][3] < -5){
-		mc.mat[0][3] = -5;
+	}else if(mc.mat[0][3] < -4){
+		mc.mat[0][3] = -4;
 	}
 	if(mc.mat[1][3] > 3){
 		mc.mat[1][3] = 3;
