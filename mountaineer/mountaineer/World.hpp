@@ -8,7 +8,6 @@
 #include "Character.hpp"
 #include "Button.hpp"
 #include "Sphere.hpp"
-#include "Mountain.hpp"
 
 class World {
 public:

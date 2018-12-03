@@ -1,7 +1,7 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-//#include <windows.h>
+#include <windows.h>
 
 #if __APPLE__
 #include <GLUT/glut.h>
@@ -26,7 +26,7 @@ public:
 	GLint splices, stacks;
 	GLuint textureID;
 	GLUquadric *quad;
-	Sphere();
+	Sphere(float rad, float red, float green, float blue);
 	~Sphere();
 	void set_colour(GLfloat, GLfloat, GLfloat);
 	void set_radius(GLfloat);

@@ -4,6 +4,7 @@
 
 #include "World.hpp"
 extern GLint paused;
+extern GLint objNum;
 
 
 // THE OBJNUM IS INCLUDING THE CUBES THAT APPEAR TO BE 2D BECAUSE OF THE ANGLE IN THE PAUSE MENU, THATS WHY I
@@ -12,42 +13,54 @@ extern GLint paused;
 
 World::World() {
 
-	objnum = 9; // number of object
+	objnum = 11; // number of object
     
 	list[0] = (Shape*) malloc( sizeof(Shape*) * objnum);  // array to hold object pointers
+    
+    // Character
 	list[0] = new Character();
 	list[0]->scaleChange(-0.6);
 
-	list[1] = new Cube();
-	list[1]->translate(-3,0,0);
+    // Boulders
+	list[1] = new Sphere(0.5,0.8,0.8,0.8);
+	list[1]->translate(-3,10,0);
 	list[1]->scaleChange(-0.6);
     
-	list[2] = new Cube();
-	list[2]->translate(3,0,0);
+	list[2] = new Sphere(0.5,0.8,0.8,0.8);
+	list[2]->translate(3,10,0);
 	list[2]->scaleChange(-0.6);
-    
+
+	list[3] = new Sphere(0.5,0.8,0.8,0.8);
+	list[3]->translate(3,15,0);
+	list[3]->scaleChange(-0.6);
+
+	list[4] = new Sphere(0.5,0.8,0.8,0.8);
+	list[4]->translate(-3,15,0);
+	list[4]->scaleChange(-0.6);
+
     // Mountain
-	list[3] = new Sphere();
-	list[3]->translate(-1.5, -7, -11);
+	list[5] = new Sphere(10,0.5,0.5,0.5);
+	list[5]->translate(-1.5, -7, -11);
     
-	list[4] = new Sphere();
-	list[4]->translate(-4, -12, -11);
+	list[6] = new Sphere(10,0.5,0.5, 0.5);
+	list[6]->translate(-4, -12, -11);
     
-	list[5] = new Sphere();
-	list[5]->translate(1, -2, -11);
+	list[7] = new Sphere(10,0.5,0.5,0.5);
+	list[7]->translate(1, -2, -11);
     
     
-    // Pause Menu Stuff
-	list[6] = new Cube();   // Resume Button
-	list[6]->translate(0.0,2.0,0.0);
-	list[6]->scaleChange(-0.6);
-    
-	list[7] = new Cube();   // Restart Button
-	list[7]->scaleChange(-0.6);
-    
-	list[8] = new Cube();   // Quit Button
-	list[8]->translate(0.0,-2.0,0.0);
+    // Pause Menu Buttons
+	list[8] = new Cube();   // Resume Button
+	list[8]->translate(0.0,2.0,0.0);
 	list[8]->scaleChange(-0.6);
+    
+	list[9] = new Cube();   // Restart Button
+	list[9]->scaleChange(-0.6);
+    
+	list[10] = new Cube();   // Quit Button
+	list[10]->translate(0.0,-2.0,0.0);
+	list[10]->scaleChange(-0.6);
+
 
 }
 
