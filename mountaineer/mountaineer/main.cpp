@@ -44,7 +44,7 @@ GLint upPressed = 2;
 GLint downPressed = 2;
 GLint leftPressed = 2;
 GLint rightPressed = 2;
-
+GLint BOULDER_MAX = 18;
 GLint paused = 2;
 GLint pauseFlag = 2;
 GLint resumeFlag = 2;
@@ -53,6 +53,9 @@ GLint resetFlag = 2;
 
 Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
+float timeFactor = 1;
+float speedFactor = 1;
+float stupid = 1;
 int MAX_BOULDERS = 5;
 
 
@@ -193,15 +196,15 @@ void physics(void){
 	int i = 1;
 	int j = 3;
 	myWorld.list[0]->stayInBound();
-	if(timeFactor / 10 < 3){
+	if(timeFactor / 10 < 2){
 		j = 3 + int(timeFactor /10);
 	}else{
-		j = 6;
+		j = 5;
 	}
 	for(; i < j; i++){
-		if(i != 3){
+
 			int c = myWorld.list[0]->checkCollision(myWorld.list[i]);
-			Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
+			//Shape *temp = myWorld.list[0]; //must grab a temp pointer or else getters wont work
 //			GLfloat x = temp->getX();
 //			GLfloat y = temp->getY();
 //			temp = myWorld.list[1];
@@ -226,22 +229,29 @@ void physics(void){
 				health -=1;
 				PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
 				//PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+
 			}
-			myWorld.list[i]->translate(0, -translateConstant2 *timeFactor, 0);
-			rx = myWorld.list[3]->getMC().mat[0][0];
-			ry = myWorld.list[3]->getMC().mat[1][0];
-			rz = myWorld.list[3]->getMC().mat[2][0];
-			myWorld.list[3]->rotateMC(rx, ry, rz, 0.02);
-			rx = myWorld.list[4]->getMC().mat[0][0];
-			ry = myWorld.list[4]->getMC().mat[1][0];
-			rz = myWorld.list[4]->getMC().mat[2][0];
-			myWorld.list[4]->rotateMC(rx, ry, rz, 0.02);
+			if(timeFactor < BOULDER_MAX){
+				speedFactor = timeFactor;
+			}else{
+				speedFactor = BOULDER_MAX;
+			}
+
+			myWorld.list[i]->translate(0, -translateConstant2 *speedFactor, 0);
 			rx = myWorld.list[5]->getMC().mat[0][0];
 			ry = myWorld.list[5]->getMC().mat[1][0];
 			rz = myWorld.list[5]->getMC().mat[2][0];
 			myWorld.list[5]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[6]->getMC().mat[0][0];
+			ry = myWorld.list[6]->getMC().mat[1][0];
+			rz = myWorld.list[6]->getMC().mat[2][0];
+			myWorld.list[6]->rotateMC(rx, ry, rz, 0.02);
+			rx = myWorld.list[7]->getMC().mat[0][0];
+			ry = myWorld.list[7]->getMC().mat[1][0];
+			rz = myWorld.list[7]->getMC().mat[2][0];
+			myWorld.list[7]->rotateMC(rx, ry, rz, 0.02);
 		}
-	}
+
 }
 
 
@@ -288,15 +298,18 @@ void restartGame() {
         pauseFlag = 2;
         timeFactor = 1;
         resetFlag = 3;
+	health=3;
         
         // Move characters and cubes back
-        for(int i = 0; i < 6; i++) {
+        for(int i = 0; i < 8; i++) {
             myWorld.list[i]->translate(-20.0,20.0,0.0);
         }
         
         // Move boulders up to top
         myWorld.list[1]->translate(0.0,10.0,0.0);
         myWorld.list[2]->translate(0.0,10.0,0.0);
+        myWorld.list[3]->translate(0.0,10.0,0.0);
+        myWorld.list[3]->translate(0.0,10.0,0.0);
     }
     // SET SCORE = 0  =====================================================
 }
@@ -307,7 +320,7 @@ void restartGame() {
 void resumeGame() {
     if(resumeFlag == 3) {
         // Move characters and cubes back
-        for(int i = 0; i < 6; i++) {
+        for(int i = 0; i < 8; i++) {
             myWorld.list[i]->translate(-20.0,20.0,0.0);
         }
         resumeFlag = 2;
@@ -357,6 +370,51 @@ void init(void) {
 }
 
 
+void deathAnimation(int n){
+	while(myWorld.list[0]->getY() > -1){
+		printf("a\n");
+		float rx = myWorld.list[0]->getMC().mat[0][2];
+		float ry = myWorld.list[0]->getMC().mat[1][2];
+		float rz = myWorld.list[0]->getMC().mat[2][2];
+		sshapep = myWorld.list[0];
+		sshapep->rotateMC(rx,ry,rz, 0.5);
+		float higherPos = myWorld.list[0]->getY();
+		float lowerPos = myWorld.list[0]->getY() -0.05;
+		while(higherPos > lowerPos){
+			printf("b\n");
+			myWorld.list[0]->translate(0, -translateConstant, 0);
+			higherPos -= translateConstant/8;
+			//myWorld.draw();
+
+			//glFlush();
+			//glutSwapBuffers();
+			//glutPostRedisplay();
+		}
+		myWorld.draw();
+		glutPostRedisplay();
+		glutTimerFunc(20,deathAnimation,n);
+		//printf("got here\n");
+		//glFlush();
+		glutSwapBuffers();
+		//glutPostRedisplay();
+
+	}
+}
+void gameOver(){
+
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    char gameOver[100] = {'G','A','M','E', ' ', ' ','O','V','E','R'};
+    output(-0.2,2,1, 1, 0, 0, gameOver);
+
+    char reset[100] = {'R','E','S','E','T'};
+    output(-0.05,-0.1,1, 1,1,1, reset);
+
+    char quit[100] = {'Q','U','I','T'};
+    output(0,-1.92,1, 1,1,1, quit);
+
+
+
+}
 
 
 
@@ -387,12 +445,24 @@ void display(void) {
 			char score[100] = {'S','C','O','R','E', ':'};
 			char scoreBuffer[10];
 			itoa(int(timeFactor* 100), scoreBuffer, 10);
+			char highScore[100] = {'H','I','G','H','S','C','O','R','E', ':'};
+			char highScoreBuffer[10];
+			if(stupid < timeFactor *100){
+				stupid = timeFactor *100;
+			}
 
+			itoa(int(stupid), highScoreBuffer, 10);
 			output(-4,3.9, 1,1,1,1, score);
 			output(-2,3.99, 1,1,1,1, scoreBuffer);
+
+			output(-4.03,3.7, 1,1,1,1, highScore);
+			output(-2.03,3.79, 1,1,1,1, highScoreBuffer);
+
 			myWorld.draw();
 			}else{
 				//death animation and outro to game over screen
+				//deathAnimation(60*3); //DEATH ANIMATION IS TOO HARD
+				gameOver();
 			}
         
         
@@ -402,7 +472,6 @@ void display(void) {
     glutPostRedisplay();
 
 }
-
 
 
 
