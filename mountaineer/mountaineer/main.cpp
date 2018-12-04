@@ -258,6 +258,7 @@ void pauseGame() {
 void restartGame() {
 	PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
     if(resetFlag == 2) {
+
 		paused = 2; // unpause
 		pauseFlag = 2;
 		timeFactor = 1;
@@ -350,7 +351,7 @@ void quitGame() {
 
 void init(void) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowPosition(200, 400);
+    glutInitWindowPosition(250, 0);
     glutInitWindowSize(winWidth, winHeight);
     glutCreateWindow("Mountaineer");
     glMatrixMode(GL_PROJECTION);
@@ -403,10 +404,9 @@ void deathAnimation(int n){
 }
 
 void gameOver(){
-
 	gameOverFlag = 3;
 	resetFlag = 2;
-	PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
+	//PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
 
 	// Strings to display on screen for game over screen
 	glClearColor(0.0, 0.0, 0.0, 0.0);
@@ -537,6 +537,7 @@ void mouseAction(int button, int action, int x, int y) {
         if(gameOverFlag == 3) {
             restartFlag = 3;
             if(x > 355 && x < 410 && y > 368 && y < 384) {
+            	//PlaySound((LPCSTR) "music.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
                 restartGame();
             }
 
