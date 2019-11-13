@@ -10,7 +10,7 @@
 
 class Point{
 public:
-	GLfloat x,y,z;     //the coordinates
+	GLfloat x,y,z;    // Point coordinates
 	Point();
 	Point(GLfloat xx, GLfloat yy, GLfloat zz);
 	void set(GLfloat xx, GLfloat yy, GLfloat zz);

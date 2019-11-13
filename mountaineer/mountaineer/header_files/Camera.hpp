@@ -13,9 +13,9 @@
 
 class Camera {
  public:
-	Point eye; 			//camera position
-	Point ref; 			//look at point
-	Vector viewup; 		//view up vector
+	Point eye; 			// Camera position
+	Point ref; 			// Look at point
+	Vector viewup; 		// View up vector
 	GLfloat aspect, viewAngle, nearDist, farDist;
 	Vector viewNorm;
 
@@ -39,8 +39,8 @@ class Camera {
 
 	/*  */
 	void setProjectionMatrix();
-
 };
+
 #endif
 
 

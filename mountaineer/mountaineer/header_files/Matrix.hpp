@@ -16,9 +16,9 @@ using namespace std;
 
 class Matrix {
 public:
-	GLfloat mat[4][4];   					// this matrix is for MC
-	Matrix();  								// constructor
-	void reset();  								// constructor
+	GLfloat mat[4][4];   					// This matrix is for MC
+	Matrix();  								// Constructor
+	void reset();  							
 	void matrixPreMultiply(Matrix* m);  	// mat <- m*mat
 	void multiplyVector(GLfloat* v); 		// mat*v
 	void normalize();  						// mormalize mat

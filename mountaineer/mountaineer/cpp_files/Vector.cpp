@@ -1,4 +1,4 @@
-#include "Vector.hpp"
+#include "../header_files/Vector.hpp"
 #include <math.h>
 #include <stdio.h>
 #include <iostream>
@@ -29,9 +29,7 @@ void Vector::set(Vector v) {
 	z = v.z;
 }
 
-
-Vector Vector::cross(Vector b) //return this cross b
-{
+Vector Vector::cross(Vector b) { //return this cross b
 	Vector c(y*b.z - z*b.y, z*b.x - x*b.z, x*b.y - y*b.x);
 	return c;
 }
@@ -40,11 +38,11 @@ GLfloat Vector::dot(Vector b) {
 	return x * b.x + y * b.y + z * b.z;
 }
 
-void Vector::build4tuple(float v[]){
+void Vector::build4tuple(float v[]) {
 	v[0] = x; v[1] = y; v[2] = z; v[3] = 0.0f;
 }
 
-void Vector::normalize(){
+void Vector::normalize() {
 	GLdouble sqs = x * x + y * y + z * z;
 	if(sqs < 0.0000001)
 	{
@@ -56,7 +54,6 @@ void Vector::normalize(){
 	y *= scaleFactor;
 	z *= scaleFactor;
 }
-
 
 /* setDiff
  * set to difference a - b

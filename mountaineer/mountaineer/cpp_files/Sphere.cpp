@@ -1,4 +1,5 @@
-#include "Sphere.hpp"
+#include "../header_files/Sphere.hpp"
+
 Sphere::Sphere(float rad, float red,  float green, float blue, GLuint text, Image* image) {
 	radius = rad;
 	mode = MODE_WIRE;
@@ -11,7 +12,6 @@ Sphere::Sphere(float rad, float red,  float green, float blue, GLuint text, Imag
 	g = green;
 	b = blue;
 }
-
 
 Sphere::~Sphere() {
 	gluDeleteQuadric(quad);
@@ -32,7 +32,6 @@ void Sphere::set_textureID(GLuint text){
 }
 
 void Sphere::draw() {
-
 	glPushMatrix();
 	this->ctmMultiply();
 	//glColor3f(r, g, b);
@@ -72,6 +71,5 @@ void Sphere::draw() {
 	gluSphere(this->quad, radius, splices, stacks);
 	glPopMatrix();
 	glEnd();
-
 }
 

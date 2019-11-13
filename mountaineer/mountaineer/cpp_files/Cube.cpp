@@ -1,6 +1,5 @@
-#include "Cube.hpp"
+#include "../header_files/Cube.hpp"
 #include <cstdio>
-
 
 extern Camera myCamera;
 //extern GLint shading;
@@ -40,19 +39,14 @@ Cube::Cube()
 	faceNormal[3][0] = 0.0; faceNormal[3][1] = 1.0; faceNormal[3][2] = 0.0;
 	faceNormal[4][0] = 1.0; faceNormal[4][1] = 0.0; faceNormal[4][2] = 0.0;
 	faceNormal[5][0] = 0.0; faceNormal[5][1] = -1.0; faceNormal[5][2] = 0.0;
-
-
-
+	
     r = 1.0; g = 1.0; b = 1.0;
-
 }
 
 
 
 void Cube::draw_face(int i)
 {
-
-
     glColor3f(faceColor[i][0], faceColor[i][1], faceColor[i][2]);
 
 	glBegin(GL_POLYGON);
@@ -68,10 +62,9 @@ void Cube::draw_face(int i)
 
 void Cube::drawMC()
 {
-	for(int i  = 0; i < 6; i++){
-		if(isFrontface(i, myCamera)){
-
-			draw_face(i);
+	for(int face_index = 0; face_index < 6; face_index++) {
+		if(isFrontface(face_index, myCamera)) {
+			draw_face(face_index);
 		}
 	}
 }
@@ -81,9 +74,9 @@ void Cube::draw()
     glPushMatrix();
     this->ctmMultiply();
     glScalef(s,s,s);
-    for(int i = 0; i < 6; i++){
-    	if(isFrontface(i, myCamera)){
-    		draw_face(i);
+    for(int face_index = 0; face_index < 6; face_index++) {
+    	if(isFrontface(face_index, myCamera)) {
+    		draw_face(face_index);
     	}
 
     }

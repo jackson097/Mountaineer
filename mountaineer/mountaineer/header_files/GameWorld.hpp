@@ -16,8 +16,4 @@ public:
     void displayGameWorld();    // displays game world
 };
 
-
-
-
-
 #endif /* GameWorld_hpp */

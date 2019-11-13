@@ -17,7 +17,6 @@
 
 #include "Cube.hpp"
 
-
 class Character: public Shape {
 protected:
     Cube head, body, rightArm, leftArm, rightLeg, leftLeg;
@@ -26,7 +25,5 @@ public:
     Character();
     void draw();
 };
-
-
 
 #endif /* Character_hpp */

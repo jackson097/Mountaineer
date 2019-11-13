@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "Camera.hpp"
-#include "Matrix.hpp"
+#include "../header_files/Camera.hpp"
+#include "../header_files/Matrix.hpp"
 
 
 //bool DEBUG = false;
@@ -38,10 +38,7 @@ void Camera::setViewNorm(){
 	y = y/sr;
 	z = z/sr;
 	viewNorm.set(x,y,z);
-
-
 }
-
 
 void Camera::setProjectionMatrix() {
 	glMatrixMode(GL_PROJECTION);
@@ -50,9 +47,7 @@ void Camera::setProjectionMatrix() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	gluLookAt(eye.x, eye.y, eye.z, ref.x, ref.y, ref.z, viewup.x,viewup.y,viewup.z);
-
 }
-
 
 void Camera::rotate(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) { //w.r.p.t WC
 // need to be implemented
@@ -75,4 +70,3 @@ void Camera::translate(GLfloat tx, GLfloat ty, GLfloat tz){ //w.r.p.t WC
 	eye.y += ty;
 	eye.z += tz;
 }
-

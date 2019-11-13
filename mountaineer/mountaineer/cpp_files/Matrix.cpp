@@ -4,7 +4,7 @@
  *
  */
 
-#include "Matrix.hpp"
+#include "../header_files/Matrix.hpp"
 
 // mat <- identity matrix
 Matrix::Matrix() {
@@ -54,8 +54,6 @@ void Matrix::transpose() {
 
 		}
 	}
-
-
 }
 
 // normalize mat
@@ -83,9 +81,6 @@ void Matrix::normalize() {
 	mat[3][1] = 0;
 	mat[3][2] = 0;
 	mat[3][3] = 1;
-
-
-
 }
 
 // v  <- mat * v
@@ -101,8 +96,6 @@ void Matrix::multiplyVector(GLfloat *v) {
 		v[vect] = sum;
 		sum = 0;
 	}
-
-
 }
 
 // mat <- rotation matrix (rx, ry, rz, angle)
@@ -148,8 +141,5 @@ void Matrix::rotateMatrix(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
 	m->mat[3][3] = 1;
 	this->matrixPreMultiply(m);
 	delete m;
-
-
-
 }
 

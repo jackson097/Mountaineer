@@ -23,7 +23,6 @@
 
 
 class Button {
-    
     public:
         Button();
         GLint x1, x2, y1, y2;

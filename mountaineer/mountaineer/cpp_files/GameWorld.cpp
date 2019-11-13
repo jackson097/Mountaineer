@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jackson Newlands. All rights reserved.
 //
 
-#include "GameWorld.hpp"
+#include "../header_files/GameWorld.hpp"
 
 void GameWorld::displayGameWorld() {
     

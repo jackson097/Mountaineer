@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Point.hpp"
+#include "../header_files/Point.hpp"
 
 Point::Point(){
 	x = 0.0;

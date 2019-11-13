@@ -2,18 +2,17 @@
  * File: World.hpp
  */
 
-#include "World.hpp"
+#include "../header_files/World.hpp"
+
 extern GLint paused;
 //extern GLuint textureID;
 GLuint textureID = 0;
 Image *image;
 
-
 World::World() {
-
 	objnum = 11; // number of object
 
-	image = loadBMP("Asphalt2_bump.bmp");
+	image = loadBMP("../images/Asphalt2_bump.bmp");
 	textureID = loadTexture(image);
     
 	list[0] = (Shape*) malloc( sizeof(Shape*) * objnum);  // array to hold object pointers
@@ -47,8 +46,7 @@ World::World() {
 	list[7] = new Sphere(10, 0.5, 0.5, 0.5, textureID, image);
 	list[7]->translate(1, -2, -11);
 
-
-	// Pause Menu Stuff
+	// Pause Menu
 	list[8] = new Cube();   // Resume Button
 	list[8]->translate(0.0,2.0,0.0);
 	list[8]->scaleChange(-0.6);
@@ -59,8 +57,6 @@ World::World() {
 	list[10] = new Cube();   // Quit Button
 	list[10]->translate(0.0,-2.0,0.0);
 	list[10]->scaleChange(-0.6);
-
-
 }
 
 World::~World(){
@@ -72,7 +68,7 @@ World::~World(){
     }
     
     else if (paused == 2) {
-        for (int i = 0; i<objnum-3; i++)        // (objNum - 3) because this one doesn't include pause buttons
+        for (int i = 0; i<objnum-3; i++)  // (objNum - 3) because this one doesn't include pause buttons
             delete list[i];
         
         free(list);
@@ -91,9 +87,6 @@ void World::draw() {
             list[i]->draw();
         }
     }
-    
-    
-    
 }
 
 //Makes the image into a texture, and returns the id of the texture
@@ -115,7 +108,6 @@ GLuint World::loadTexture(Image* image) {
 }
 
 void World::reset() {
-    
     if(paused == 3) {
         for (int i = 0; i<objnum; i++)
             list[i]->reset();

@@ -9,7 +9,6 @@
 #ifndef MainMenu_hpp
 #define MainMenu_hpp
 
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -21,7 +20,6 @@
 #endif
 
 #include <iostream>
-
 #include "Button.hpp"
 
 
@@ -32,8 +30,5 @@ public:
 protected:
     void drawStartButton(); // draws the start button
 };
-
-
-
 
 #endif /* MainMenu_hpp */

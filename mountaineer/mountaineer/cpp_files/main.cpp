@@ -18,14 +18,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "MainMenu.hpp"
-#include "Button.hpp"
-#include "Camera.hpp"
-#include "World.hpp"
-#include "Sphere.hpp"
-#include "Image.hpp"
-
-
+#include "../header_files/MainMenu.hpp"
+#include "../header_files/Button.hpp"
+#include "../header_files/Camera.hpp"
+#include "../header_files/World.hpp"
+#include "../header_files/Sphere.hpp"
+#include "../header_files/Image.hpp"
 
 
 // Global Variables
@@ -45,8 +43,10 @@ Button restartButton;
 Camera myCamera;
 World myWorld;
 int health = 3;
-GLint upPressed = 2, downPressed = 2, leftPressed = 2, rightPressed = 2, BOULDER_MAX = 18, paused = 2, pauseFlag = 2, resumeFlag = 2, resetFlag = 2, restartFlag = 2, gameOverFlag = 2;
-
+// Used 2's and 100's instead of 0's and 1's because of error caused by using 0's and 1's
+// 2 indicates OFF, 100 indicates ON
+GLint leftPressed, rightPressed, paused, pauseFlag, resumeFlag, resetFlag, restartFlag, gameOverFlag = 2;
+GLint BOULDER_MAX = 18
 
 Shape *sshapep = myWorld.list[0];
 float timeFactor = 1;
@@ -54,7 +54,7 @@ float speedFactor = 1;
 float stupid = 1;
 int MAX_BOULDERS = 5;
 
-GLint speedFactor1, speedfactor2, speedfactor3, speedyboi = 1;
+GLint boulderSpeedMultiple = 1;
 
 #if __APPLE__
 GLfloat translateConstant = 0.15;
@@ -64,9 +64,7 @@ GLfloat translateConstant = 0.040;
 GLfloat translateConstant2 = 0.010;
 #endif
 
-
-void output(float x, float y, float z, float r, float g, float b, char *string)
-{
+void output(float x, float y, float z, float r, float g, float b, char *string) {
   glColor3f( r, g, b );
   glRasterPos3f(x, y, z);
   int len, i;
@@ -80,15 +78,14 @@ void MyKeyboardFunc(unsigned char Key, int x, int y){
     if(worldOption == 2) {
         if(Key == 'a'){
             leftPressed = 100;
-            
-        }if(Key == 'd'){
+        } if(Key == 'd'){
             rightPressed = 100;
-        }else if (health > 0 && Key == 27) {
+		// If escape is clicked
+        } else if (health > 0 && Key == 27) {
             paused = 3;
         }
     }
 }
-
 
 void MyKeyboardUpFunc(unsigned char key, int x, int y) {
     if(worldOption == 2){
@@ -101,21 +98,16 @@ void MyKeyboardUpFunc(unsigned char key, int x, int y) {
     }
 }
 
-
-
 void MyArrowFunc(int Key, int x, int y) {
-    
     if(worldOption == 2){
         if(Key == GLUT_KEY_LEFT){
-            leftPressed = 100;
-            
-        }else if(Key == GLUT_KEY_RIGHT){
+            leftPressed = 100;       
+        }
+		else if(Key == GLUT_KEY_RIGHT){
             rightPressed = 100;
         }
     }
 }
-
-
 
 void SpecialKeysUp(int key, int x, int y) {
     if(worldOption == 2) {
@@ -128,7 +120,6 @@ void SpecialKeysUp(int key, int x, int y) {
     }
 }
 
-
 void Update() {
     if(worldOption == 2) {
         if(leftPressed == 100) {
@@ -139,10 +130,6 @@ void Update() {
         }
     }
 }
-
-
-
-
 
 void physics(void){
 
@@ -191,16 +178,16 @@ void physics(void){
 
 			// Make boulders all different speeds
 			if(i == 1) {
-				speedyboi = 1.0;
+				boulderSpeedMultiple = 1.0;
 			} else if (i == 2) {
-				speedyboi = 1.7;
+				boulderSpeedMultiple = 1.7;
 			} else if (i == 3) {
-				speedyboi = 1.2;
+				boulderSpeedMultiple = 1.2;
 			} else if (i == 4) {
-				speedyboi = 1.4;
+				boulderSpeedMultiple = 1.4;
 			}
 
-			 myWorld.list[i]->translate(0, -translateConstant2 * speedFactor * speedyboi, 0);
+			 myWorld.list[i]->translate(0, -translateConstant2 * speedFactor * boulderSpeedMultiple, 0);
 			rx = myWorld.list[5]->getMC().mat[0][0];
 			ry = myWorld.list[5]->getMC().mat[1][0];
 			rz = myWorld.list[5]->getMC().mat[2][0];
@@ -216,9 +203,6 @@ void physics(void){
 		}
 	//}
 }
-
-
-
 
 void pauseGame() {
     glutIdleFunc(NULL);
@@ -314,11 +298,7 @@ void restartGame() {
 		 }
 		 */
 	}
-
 }
-
-
-
 
 void resumeGame() {
     if(resumeFlag == 3) {
@@ -341,13 +321,9 @@ void resumeGame() {
     //printf("%.6f\n", timeFactor);
 }
 
-
-
-
 void quitGame() {
     exit(0);
 }
-
 
 void init(void) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -367,10 +343,7 @@ void init(void) {
 	myCamera.setDefaultCamera();
 	myWorld.list[0]->translate(0,-2,0);
     glutPostRedisplay();
-
-
 }
-
 
 void deathAnimation(int n){
     while(myWorld.list[0]->getY() > -1){
@@ -407,7 +380,6 @@ void gameOver(){
 	gameOverFlag = 3;
 	resetFlag = 2;
 	//PlaySound((LPCSTR) "death_sound.wav", NULL, SND_FILENAME | SND_ASYNC );
-
 	// Strings to display on screen for game over screen
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 	char gameOver[100] = {'G','A','M','E', ' ', ' ','O','V','E','R'};
@@ -421,7 +393,6 @@ void gameOver(){
 
 
 	glutPostRedisplay();
-
 }
 
 void display(void) {
@@ -437,7 +408,6 @@ void display(void) {
         glFlush();
         glutSwapBuffers();
     }
-    
     
     if(worldOption == 2) {      // Game World
 
@@ -457,7 +427,6 @@ void display(void) {
             if(stupid < timeFactor *100){
                 stupid = timeFactor *100;
             }
-
             itoa(int(stupid), highScoreBuffer, 10);
             output(-4,3.9, 1,0,0,0, score);
             output(-2,3.99, 1,0,0,0, scoreBuffer);
@@ -485,12 +454,7 @@ void display(void) {
         glutSwapBuffers();
     }
     glutPostRedisplay();
-
 }
-
-
-
-
 
 void winReshapeFcn(GLint newWidth, GLint newHeight) {
     glViewport(0, 0, newWidth, newHeight);
@@ -500,10 +464,6 @@ void winReshapeFcn(GLint newWidth, GLint newHeight) {
     winHeight = newHeight;
 }
 
-
-
-
-
 void mouseAction(int button, int action, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && action == GLUT_DOWN) {
         //  printf("Clicked at %d, %d\n", x, y);
@@ -511,13 +471,12 @@ void mouseAction(int button, int action, int x, int y) {
             displayGameWorld = 1;
         }
     }
-    
+    // Determine where the screen was clicked. If it clicked a certain box on the screen, react accordingly
     if(button == GLUT_LEFT_BUTTON && action == GLUT_UP) {
         // Start game from main menu
         if (displayGameWorld == 1) {
             worldOption = 2;
         }
-        
         // Pause Menu
         if(paused == 3) {
             if(x > 360 && x < 440 && y > 310 && y < 385) {
@@ -532,7 +491,6 @@ void mouseAction(int button, int action, int x, int y) {
                 quitGame();
             }
         }
-        
         // Game Over Menu
         if(gameOverFlag == 3) {
             restartFlag = 3;
@@ -544,13 +502,10 @@ void mouseAction(int button, int action, int x, int y) {
             else if(x>361 && x<405 && y>496 && y<510) {
                 quitGame();
             }
-
         }
-
     }
     glutPostRedisplay();
 }
-
 
 
 int main(int argc, char** argv) {

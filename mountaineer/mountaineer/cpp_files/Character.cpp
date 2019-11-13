@@ -6,19 +6,19 @@
 //  Copyright © 2018 Jackson Newlands. All rights reserved.
 //
 
-#include "Character.hpp"
+#include "../header_files/Character.hpp"
 
-
-//House object constructor
+// Character object constructor
 Character::Character() {
+	// Initialize body parts of character
     head =  Cube();
     body = Cube();
     rightArm = Cube();
     leftArm = Cube();
     leftLeg = Cube();
     rightLeg = Cube();
-
-    
+	
+	// Translate the body parts so they form a cube body shape
     head.translate(0.0, 1.5, 0.0);
     head.scaleChange(-0.5);
     
@@ -34,14 +34,12 @@ Character::Character() {
     rightLeg.translate(0.8, -1.2, 0.0);
     
     leftLeg.scaleChange(-0.7);
-    leftLeg.translate(-0.8, -1.2, 0.0);
-    
+    leftLeg.translate(-0.8, -1.2, 0.0);    
 }
 
 
-
+// Draw the body parts
 void Character::draw() {
-    
     glPushMatrix();
     this->ctmMultiply();
     glScalef(s,s,s);
@@ -77,7 +75,5 @@ void Character::draw() {
     glScalef(s,s,s);
     leftLeg.draw();
     glPopMatrix();
-
-    
 }
 

@@ -1,4 +1,4 @@
-#include "Shape.hpp"
+#include "../header_files/Shape.hpp"
 #include <stdlib.h>
 
 Shape::Shape() {
@@ -21,7 +21,6 @@ void Shape::translate(GLfloat tx, GLfloat ty, GLfloat tz) {
 	mc.mat[1][3] += ty;
 	mc.mat[2][3] += tz;
 	mc.mat[3][3] = 1;
-
 }
 
 
@@ -36,11 +35,9 @@ void Shape::ctmMultiply() {
 	mc.transpose();
 	glMultMatrixf(&mc.mat[0][0]);
 	mc.transpose();
-
 }
 
 void Shape::rotate(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
-
 	Matrix m;
 	m.rotateMatrix(rx,ry,rz,angle);
 
@@ -48,7 +45,6 @@ void Shape::rotate(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
 }
 
 void Shape::rotateMC(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
-// your implementation
 	GLfloat x0,y0,z0;
 	x0 = mc.mat[0][3];
 	y0 = mc.mat[1][3];
@@ -60,7 +56,6 @@ void Shape::rotateMC(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
 }
 
 void Shape::rotateOrigin(GLfloat rx, GLfloat ry, GLfloat rz, GLfloat angle) {
-// your implementation
 	Matrix m;
 	m.rotateMatrix(rx,ry,rz, angle);
 	GLfloat v[4];
@@ -87,21 +82,18 @@ void Shape::rotateRelative(GLfloat x0, GLfloat y0, GLfloat z0, GLfloat rx, GLflo
 	mc.mat[3][3] = 1;
 }
 int Shape::checkCollision(Shape *obstacle){
-	//		printf("p:(%.1f, %.1f)", x, y);
-	//		printf("o1: (%.1f, %.1f)", x1, y1);
-
 	if(mc.mat[0][3] - 1.0 <= obstacle->mc.mat[0][3] && mc.mat[0][3] + 1.0 >= obstacle->mc.mat[0][3]){
 		if(mc.mat[1][3] - 1.0 <= obstacle->mc.mat[1][3] && mc.mat[1][3] + 1.0 >= obstacle->mc.mat[1][3]){
 			return 1;
 		}
 	}
-
 	return 0;
 }
 
 GLfloat Shape::getX(){
 	return mc.mat[0][3];
 }
+
 GLfloat Shape::getY(){
 	return mc.mat[1][3];
 }
@@ -109,12 +101,11 @@ GLfloat Shape::getY(){
 int Shape::outOfBounds(){
 	return mc.mat[1][3] < -5;
 }
+
 void Shape::randomX(){
 	GLfloat offset = ((float)rand()/ RAND_MAX)*8 -4;
 
 		mc.mat[0][3] = offset;
-
-
 }
 
 void Shape::randomY(){
@@ -123,17 +114,18 @@ void Shape::randomY(){
 	mc.mat[1][3] += offset;
 
 }
+
 void Shape::stayInBound(){
-	if(mc.mat[0][3] > 4){
+	if(mc.mat[0][3] > 4) {
 		mc.mat[0][3] = 4;
-	}else if(mc.mat[0][3] < -4){
+	}
+	else if(mc.mat[0][3] < -4) {
 		mc.mat[0][3] = -4;
 	}
-	if(mc.mat[1][3] > 3){
+	if(mc.mat[1][3] > 3) {
 		mc.mat[1][3] = 3;
-	}else if(mc.mat[1][3] < -2){
+	}
+	else if(mc.mat[1][3] < -2) {
 		mc.mat[1][3] = -2;
 	}
 }
-
-
